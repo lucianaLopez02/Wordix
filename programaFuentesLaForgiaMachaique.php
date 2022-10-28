@@ -1,5 +1,5 @@
-<?php
-include_once("wordix.php");
+<?php 
+include_once("wordix.php"); //bibloteca de funcion, incluya por unica vez el archivo php
 
 /**************************************/
 /***** DATOS DE LOS INTEGRANTES *******/
@@ -46,7 +46,7 @@ function cargarColeccionPalabras()
 
 //Proceso:
 
-$partida = jugarWordix("MELON", strtolower("MaJo"));
+$partida = jugarWordix("MELON", strtolower("MaJo")); //*opcion jugar partida para majo con una palabra melon
 //print_r($partida);
 //imprimirResultado($partida);
 
