@@ -8,6 +8,7 @@ include_once("wordix.php"); //bibloteca de funcion, incluya por unica vez el arc
 /* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
 /* Floriana Daniela La Forgia - Legajo 2498 - mail: florianalaforgia@hotmail.com.ar - Github: Alter1412   
 /* Geronimo Villaverde - Legajo 3536 - mail: geronimovillaverde@gmail.com - Github: geronimovillaverde
+/* Yael Machaique - Legajo 4135 - mail: yael.machaique@est.fi.uncoma.edu.ar - Github: lucianaLopez02
 */
 
 
