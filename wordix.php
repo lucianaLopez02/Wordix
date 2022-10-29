@@ -131,7 +131,9 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
- * ****COMPLETAR*****
+ * recibe una cadena de texto y retorna la letra buscada?
+ * @param  string $cadena
+ * @return int
  */
 function esPalabra($cadena)
 {
