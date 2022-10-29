@@ -131,7 +131,7 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
- * recibe una cadena de texto y retorna la letra buscada?
+ * recibe una cadena de texto y verifica que la cadena de texto sea texto y retorna true si todas son letras?
  * @param  string $cadena
  * @return int
  */
