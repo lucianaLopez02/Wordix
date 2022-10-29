@@ -18,8 +18,7 @@ Universidad Nacional del Comahue
  
 # Integrantes del Grupo N°1
 
-**Yael Machaique** - Legajo 4135 - mail: 
-yael.machaique@est.fi.uncoma.edu.ar
+**Yael Machaique** - Legajo 4135 - mail: yael.machaique@est.fi.uncoma.edu.ar - Github: lucianaLopez02
 
 **Geronimo Villaverde** - Legajo 3536 - mail: geronimovillaverde@gmail.com  
 
