@@ -7,7 +7,6 @@ include_once("wordix.php"); //bibloteca de funcion, incluya por unica vez el arc
 
 /* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
 /* Floriana Daniela La Forgia - Legajo 2498 - mail: florianalaforgia@hotmail.com.ar - Github: Alter1412   
-/*Geronimo Villaverde - Legajo 3536 - Mail: geronimovillaverde@gmail.com - Github: geronimovillaverde
 */
 
 
@@ -25,8 +24,9 @@ function cargarColeccionPalabras()
     $coleccionPalabras = [
         "MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
         "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
-        "VERDE", "MELON", "YUYOS", "PIANO", "PISOS"
+        "VERDE", "MELON", "YUYOS", "PIANO", "PISOS",
         /* ... COMPLETAR ... Agregar 5 palabras más */
+        "LAPIZ", "LOROS", "PERRO", "HOJAS", "TIGRE"
     ];
 
     return ($coleccionPalabras);
