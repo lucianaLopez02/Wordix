@@ -113,6 +113,8 @@ function escribirSegunEstado($texto, $estado)
 
 /**
  * ****COMPLETAR*****
+ * Escribe un mensaje de vienvenida al usuario
+ * @param string $usuario
  */
 function escribirMensajeBienvenida($usuario)
 {
