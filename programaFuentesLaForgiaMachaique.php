@@ -27,7 +27,7 @@ function cargarColeccionPalabras()
         "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
         "VERDE", "MELON", "YUYOS", "PIANO", "PISOS",
         /* ... COMPLETAR ... Agregar 5 palabras más */
-        "LAPIZ", "LOROS", "PERRO", "HOJAS", "TIGRE",
+        "LAPIZ", "LOROS", "PERRO", "HOJAS", "TIGRE"
     ];
 
     return ($coleccionPalabras);
