@@ -27,8 +27,7 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /**************************************/
 
 /**
- *  *****COMPLETAR*****            Preguntar a los profes max y min 
- * Solicita al usuario que ingrese un numero dependiendo de un limite 
+ * Solicita un número y verifica si el valor ingresado esta entre el rango de numero (entre $min y $max) y si es entero.
  * @param int $min 
  * @param int $max
  * @return int
