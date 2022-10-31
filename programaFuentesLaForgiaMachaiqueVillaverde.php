@@ -44,20 +44,21 @@ function cargarColeccionPalabras()
 * @return $coleccionPartidas
 */
 function cargarPartidas(){
-	$coleccionPartidas = []; // Inicializo la coleccion de partidas
-	
-	$coleccionPartidas[0] = ["palabraWordix" => "QUESO","jugador" <= "majo","intentos" => 6 ,"puntaje" => 0];
-	$coleccionPartidas[1] = ["palabraWordix" => "CASAS","jugador" <= "rudolf","intentos" => 3 ,"puntaje" => 14];
-	$coleccionPartidas[2] = ["palabraWordix" => "QUESO","jugador" <= "pink2000","intentos" => 6 ,"puntaje" => 10];
-	$coleccionPartidas[3] = ["palabraWordix" => "TIGRE","jugador" <= "mayonesa02","intentos" => 5 ,"puntaje" => 12];
-    $coleccionPartidas[4] = ["palabraWordix" => "PIANO","jugador" <= "pancho12","intentos" => 9 ,"puntaje" => 5];
-    $coleccionPartidas[5] = ["palabraWordix" => "CASAS","jugador" <= "trufa48","intentos" => 3 ,"puntaje" => 11];
-    $coleccionPartidas[6] = ["palabraWordix" => "YUYOS","jugador" <= "harry1","intentos" => 8 ,"puntaje" => 15];
-    $coleccionPartidas[7] = ["palabraWordix" => "HUEVO","jugador" <= "thor","intentos" => 1 ,"puntaje" => 8];
-    $coleccionPartidas[8] = ["palabraWordix" => "GATOS","jugador" <= "zoe","intentos" => 2 ,"puntaje" => 6];
-    $coleccionPartidas[9] = ["palabraWordix" => "LAPIZ","jugador" <= "luna","intentos" => 2 ,"puntaje" => 5];
-	
-return $coleccionPartidas;
+    $coleccionPartidas = []; // Inicializo la coleccion de partidas
+
+    $coleccionPartidas[0] = ["palabraWordix" => "QUESO","jugador" => "majo","intentos" => 6 ,"puntaje" => 0];
+    $coleccionPartidas[1] = ["palabraWordix" => "CASAS","jugador" => "rudolf","intentos" => 3 ,"puntaje" => 14];
+    $coleccionPartidas[2] = ["palabraWordix" => "QUESO","jugador" => "pink2000","intentos" => 6 ,"puntaje" => 10];
+    $coleccionPartidas[3] = ["palabraWordix" => "TIGRE","jugador" => "mayonesa02","intentos" => 5 ,"puntaje" => 12];
+    $coleccionPartidas[4] = ["palabraWordix" => "PIANO","jugador" => "pancho12","intentos" => 9 ,"puntaje" => 5];
+    $coleccionPartidas[5] = ["palabraWordix" => "CASAS","jugador" => "trufa48","intentos" => 3 ,"puntaje" => 11];
+    $coleccionPartidas[6] = ["palabraWordix" => "YUYOS","jugador" => "luna","intentos" => 8 ,"puntaje" => 15];
+    $coleccionPartidas[7] = ["palabraWordix" => "HUEVO","jugador" => "thor","intentos" => 1 ,"puntaje" => 8];
+    $coleccionPartidas[8] = ["palabraWordix" => "GATOS","jugador" => "zoe","intentos" => 2 ,"puntaje" => 6];
+    $coleccionPartidas[9] = ["palabraWordix" => "LAPIZ","jugador" => "luna","intentos" => 2 ,"puntaje" => 5];
+
+    return $coleccionPartidas;
+}
 
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
