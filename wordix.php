@@ -27,6 +27,7 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /**************************************/
 
 /**
+ * ****COMPLETAR***** Completado
  * Solicita un número y verifica si el valor ingresado esta entre el rango de numero (entre $min y $max) y si es entero.
  * @param int $min 
  * @param int $max
