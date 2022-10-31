@@ -20,7 +20,8 @@ Universidad Nacional del Comahue
 
 **Yael Machaique** - Legajo 4135 - mail: yael.machaique@est.fi.uncoma.edu.ar - Github: lucianaLopez02
 
-**Geronimo Villaverde** - Legajo 3536 - mail: geronimovillaverde@gmail.com  
+**Geronimo Villaverde** - Legajo 3536 - mail: geronimovillaverde@gmail.com  - 
+GitHub : https://github.com/geronimovillaverde
 
 **Floriana Daniela La Forgia** - Legajo 2498 - mail: florianalaforgia@hotmail.com.ar - Github: Alter1412  
 
