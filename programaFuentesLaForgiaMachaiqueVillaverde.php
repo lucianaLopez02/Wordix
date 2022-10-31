@@ -41,7 +41,7 @@ function cargarColeccionPalabras()
 //EJEMPLO DE LA FUNCIÓN 2
 /**
 * inicializa una estrutucta de partidas y retorna una coleccion de partidas
-* @return $coleccionPartidas
+* @return array
 */
 function cargarPartidas(){
     $coleccionPartidas = []; // Inicializo la coleccion de partidas
