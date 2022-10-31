@@ -131,7 +131,12 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
+<<<<<<< Updated upstream
  * recibe una cadena de texto y verifica que la cadena de texto sea texto y retorna true si todas son letras
+=======
+ * ****COMPLETAR***** 
+ * recibe una cadena de texto y verifica que la cadena de texto sea texto y retorna true si todas son letras?
+>>>>>>> Stashed changes
  * @param  string $cadena
  * @return boolean
  */
