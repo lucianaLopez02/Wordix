@@ -329,11 +329,13 @@ function esIntentoGanado($estructuraPalabraIntento)
 
 /**
  * ****COMPLETAR***** documentación de la intefaz
+ * 
  */
 function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales necesarios */
 {
 
-    /* ****COMPLETAR***** cuerpo de la función*/
+    /* ****COMPLETAR***** cuerpo de la función
+    Int puntajeWordix*/
     return 0;
 }
 
