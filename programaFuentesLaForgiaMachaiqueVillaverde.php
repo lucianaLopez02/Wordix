@@ -38,7 +38,7 @@ function cargarColeccionPalabras()
 
 /* ... COMPLETAR ... */
 
-//EJEMPLO DE LA FUNCIÓN 2
+//EJEMPLO DE LA FUNCIÓN 2. Punto 2
 /**
 * inicializa una estrutucta de partidas y retorna una coleccion de partidas
 * @return array
@@ -59,6 +59,31 @@ function cargarPartidas(){
 
     return $coleccionPartidas;
 }
+
+// Menú de opciones. Punto 3
+
+/**
+ * mostrar la opciones del menu del juego y solicitar al usuario una opcion valida y retorne el numero de la opcion
+ * @return int
+ */
+function seleccionarOpcion(){
+    // $numeroOpcion int
+    echo "------MENÚ OPCIONES PARA JUGAR WORDIX--------\n";
+    echo "1. Jugar al Wordix con una palabra elegida\n";
+    echo "2. Jugar al Wordix con una palabra aleatoria\n";
+    echo "3. Mostrar una partida\n";
+    echo "4. Mostrar la primer partida ganadora\n";
+    echo "5. Mostrar resumen de Jugador\n";
+    echo "6. Mostrar listado de partidas ordenadas por jugador y por palabra\n";
+    echo "7. Agregar una palabra de 5 letras a Wordix\n";
+    echo "8. Salir\n";
+    echo "Ingrese una opcion: ";
+
+    $numeroOpcion = solicitarNumeroEntre(1, 8); //Invocacion del modulo solicitarNumeroEntre 
+    
+    return $numeroOpcion;
+}
+
 
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
