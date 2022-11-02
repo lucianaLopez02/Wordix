@@ -94,15 +94,16 @@ function seleccionarOpcion(){
  */
 function mostrarDatosDePartida($nroPartida){
 
-    //$nroPartida = solicitarNumeroEntre(0, 9);
-    $unaColeccionPartidas = cargarPartidas();
+    
+    //recorrido exaustivo?
+    //$unaColeccionPartidas = cargarPartidas();
 
     echo "*****************************\n";
     echo "Partida WORDIX $nroPartida : palabra ". $unaColeccionPartidas[$nroPartida]["palabraWordix"]."\n";
     echo "Jugador: " .$unaColeccionPartidas[$nroPartida]["jugador"]."\n";
     echo "Puntaje: " .$unaColeccionPartidas[$nroPartida]["puntaje"]. " puntos\n";
 
-    if ($unaColeccionPartidas[$nroPartida]["puntaje"] != 0 && $unaColeccionPartidas[$nroPartida]["intentos"] <= 6) 
+    if ($unaColeccionPartidas[$nroPartida]["puntaje"] != 0) 
     {
         echo "Intento: Adivino la palabra en ".$unaColeccionPartidas[$nroPartida]["intentos"]." intentos\n";
     } else {
@@ -122,18 +123,8 @@ function mostrarDatosDePartida($nroPartida){
  */
 function agregarPalabra($unaColeccionPalabras, $unaPalabra){
 
-    $unaColeccionPalabras[] = $unaPalabra;
+    $nuevaColeccionPalabras = array_push($unaColeccionPalabras, $unaPalabra);
     
-    $nuevaColeccionPalabras = $unaColeccionPalabras;
-    //print_r($unaColeccionPalabras); o usar array_push
-
-    /*
-    $resumenJugador = [];
-    $resumenJugador = ["jugador" => "nombre" , "partidas" => cantPartidas,
-                     "puntaje" => nro, "victorias" => $cantVictorias, 
-                     "intento1" => cantLetrasAdivinadas, "intento2" => 
-                        ];
-    */
 return $nuevaColeccionPalabras;
 }
 
