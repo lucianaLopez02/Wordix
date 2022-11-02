@@ -126,6 +126,14 @@ function agregarPalabra($unaColeccionPalabras, $unaPalabra){
     
     $nuevaColeccionPalabras = $unaColeccionPalabras;
     //print_r($unaColeccionPalabras); o usar array_push
+
+    /*
+    $resumenJugador = [];
+    $resumenJugador = ["jugador" => "nombre" , "partidas" => cantPartidas,
+                     "puntaje" => nro, "victorias" => $cantVictorias, 
+                     "intento1" => cantLetrasAdivinadas, "intento2" => 
+                        ];
+    */
 return $nuevaColeccionPalabras;
 }
 /**************************************/
