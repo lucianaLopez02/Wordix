@@ -205,6 +205,28 @@ function resumenJugador($coleccionPartidas,$nombreJugador){
 
 }
 
+
+//Punto 10 
+/**
+ * Solicita al usuario el nombre de un jugador y lo retorna en minusculas, a la vez se examina que el primer caracter del nombre no sea un numero 
+ * @return string 
+ */
+function solicitarJugador () {
+    /*string $nombreMinuscula, $nombre*/ 
+    echo "Ingrese el nombre de un jugador: ";
+    $nombre = trim(fgets(STDIN));
+    strlen ($nombre);
+    if ($nombre[0]<> is_string($nombre[0])) {                      /*Lo verifico el jueves con el profe*/                 
+        echo "Ingrese el nombre de un jugador (que el primer caracter sea una letra): ";
+        $nombre=trim(fgets(STDIN));
+    }
+    $nombreMinuscula = strtolower ($nombre);
+    return $nombreMinuscula;
+}
+
+
+
+
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
 /**************************************/
