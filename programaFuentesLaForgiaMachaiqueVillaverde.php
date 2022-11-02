@@ -114,7 +114,20 @@ function mostrarDatosDePartida($nroPartida){
 
 }
 
+// funcion agregarPalabra. Punto 7
+/**
+ * agrega una nueva palabra al la coleccionPalabras
+ * @param array $unaColeccionPalabras
+ * @param string $unaPalabra 
+ */
+function agregarPalabra($unaColeccionPalabras, $unaPalabra){
 
+    $unaColeccionPalabras[] = $unaPalabra;
+    
+    $nuevaColeccionPalabras = $unaColeccionPalabras;
+    //print_r($unaColeccionPalabras); o usar array_push
+return $nuevaColeccionPalabras;
+}
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
 /**************************************/
