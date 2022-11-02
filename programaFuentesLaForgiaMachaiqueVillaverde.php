@@ -84,6 +84,36 @@ function seleccionarOpcion(){
     return $numeroOpcion;
 }
 
+// funcion leerPalabra5Letras() de wordix.php?
+// funcion solicitarNumeroEntre($min, $max) de wordix.php?
+
+// Mostrar datos de partida. Punto 6
+/**
+ * dado un numero de partida mostrar por pantalla los datos de esa partida
+ * @param $nroPartida
+ */
+function mostrarDatosDePartida($nroPartida){
+
+    //$nroPartida = solicitarNumeroEntre(0, 9);
+    $unaColeccionPartidas = cargarPartidas();
+
+    echo "*****************************\n";
+    echo "Partida WORDIX $nroPartida : palabra ". $unaColeccionPartidas[$nroPartida]["palabraWordix"]."\n";
+    echo "Jugador: " .$unaColeccionPartidas[$nroPartida]["jugador"]."\n";
+    echo "Puntaje: " .$unaColeccionPartidas[$nroPartida]["puntaje"]. " puntos\n";
+
+    if ($unaColeccionPartidas[$nroPartida]["puntaje"] != 0 && $unaColeccionPartidas[$nroPartida]["intentos"] <= 6) 
+    {
+        echo "Intento: Adivino la palabra en ".$unaColeccionPartidas[$nroPartida]["intentos"]." intentos\n";
+    } else {
+        echo "Intento: No adivino la palabra\n";
+
+    }
+    
+    echo "*****************************\n";
+
+}
+
 
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
