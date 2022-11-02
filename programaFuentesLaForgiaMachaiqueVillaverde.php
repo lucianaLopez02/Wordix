@@ -90,13 +90,10 @@ function seleccionarOpcion(){
 // Mostrar datos de partida. Punto 6
 /**
  * dado un numero de partida mostrar por pantalla los datos de esa partida
- * @param $nroPartida
+ * @param $nroPartida?
+ * @param array unaColeccionPartidas
  */
-function mostrarDatosDePartida($nroPartida){
-
-    
-    //recorrido exaustivo?
-    //$unaColeccionPartidas = cargarPartidas();
+function mostrarDatosDePartida($nroPartida, $unaColeccionPartidas){
 
     echo "*****************************\n";
     echo "Partida WORDIX $nroPartida : palabra ". $unaColeccionPartidas[$nroPartida]["palabraWordix"]."\n";
@@ -120,11 +117,12 @@ function mostrarDatosDePartida($nroPartida){
  * agrega una nueva palabra al la coleccionPalabras
  * @param array $unaColeccionPalabras
  * @param string $unaPalabra 
+ * @return array 
  */
 function agregarPalabra($unaColeccionPalabras, $unaPalabra){
 
     $nuevaColeccionPalabras = array_push($unaColeccionPalabras, $unaPalabra);
-    
+
 return $nuevaColeccionPalabras;
 }
 
