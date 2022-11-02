@@ -163,6 +163,58 @@ function primeraPartidaGanada($coleccionPartidas,$nombreJugador){
     return $indice;
 }
 
+//Punto 9
+/** Funcion que retorna el resumen del jugador
+ *@param array $coleccionPartridas
+ *@param string $nombreJugador
+ *@return array 
+ */
+function resumenJugador($coleccionPartidas,$nombreJugador){
+    //array $resumen
+    //int $contadorVictorias, $i, $cantElementosArray, $contadorPartidas
+
+    $cantElementosArray=count($coleccionPartidas);
+    // $contadorPartidas=0;
+    //$contadorVictorias=0;
+    $resumen=[];
+    $resumen["nombre"]=$nombreJugador;
+    $resumen["partidas"]=0;
+    $resumen["puntaje"]=0;
+    $resumen["victorias"]=0;
+    $resumen["intento1"]=0;
+    $resumen["intento2"]=0;
+    $resumen["intento3"]=0;
+    $resumen["intento4"]=0;
+    $resumen["intento5"]=0;
+    $resumen["intento6"]=0;
+
+    for($i=0 ; $i <= $cantElementosArray; $i++){
+
+        if($coleccionPartidas[$i]["jugador"]== $nombreJugador){
+            $resumen["partidas"]=$resumen["partidas"]+1;
+            if($coleccionPartidas[$i]["puntaje"] > 0){
+                $resumen["puntaje"]= $coleccionPartidas[$i]["puntaje"];
+                $resumen["victorias"]= $resumen["victorias"]+1;
+                if($coleccionPartidas[$i]["intentos"] == 1){
+                    $resumen["intento1"]=$resumen["intento1"]+1;
+                }elseif($coleccionPartidas[$i]["intentos"] == 2){
+                    $resumen["intento2"]=$resumen["intento2"]+1;
+                }elseif($coleccionPartidas[$i]["intentos"] == 3){
+                    $resumen["intento3"]=$resumen["intento3"]+1;
+                }elseif($coleccionPartidas[$i]["intentos"] == 4){
+                    $resumen["intento4"]=$resumen["intento4"]+1;
+                }elseif($coleccionPartidas[$i]["intentos"] == 5){
+                    $resumen["intento5"]=$resumen["intento5"]+1;
+                }elseif($coleccionPartidas[$i]["intentos"] == 6){
+                    $resumen["intento6"]=$resumen["intento6"]+1;
+                }
+            }
+
+        }
+    }
+    return $resumen;
+
+}
 
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
