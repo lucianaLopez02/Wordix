@@ -149,7 +149,9 @@ function esPalabra($cadena)
 }
 
 /**
- *  ****COMPLETAR*****
+ *  ****COMPLETaffa
+ * @param VACIO
+ * @return STRING
  */
 function leerPalabra5Letras()
 {
@@ -334,8 +336,7 @@ function esIntentoGanado($estructuraPalabraIntento)
 function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales necesarios */
 {
 
-    /* ****COMPLETAR***** cuerpo de la función
-    Int puntajeWordix*/
+    /* ****COMPLETAR***** cuerpo de la función*/
     return 0;
 }
 
