@@ -26,13 +26,13 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /***** DEFINICION DE FUNCIONES ********/
 /**************************************/
 
-/**
- * ****COMPLETAR***** Completado
- * Solicita un número y verifica si el valor ingresado esta entre el rango de numero (entre $min y $max) y si es entero.
- * @param int $min 
- * @param int $max
- * @return int
- */
+/**  
+* ****COMPLETAR***** Completado 
+* Solicita un número y verifica si el valor ingresado esta entre el rango de numero (entre $min y $max) y si es entero.
+* @param int $min 
+* @param int $max
+* @return int
+*/
 function solicitarNumeroEntre($min, $max)
 {
     //int $numero
@@ -116,8 +116,8 @@ function escribirSegunEstado($texto, $estado)
 }
 
 /**
- * ****COMPLETAR***** Completado
- * Escribe un mensaje de bienvenida al usuario
+ * ****COMPLETAR***** Completado 
+ * Escribe un mensaje de bienvenida al usuario 
  * @param string $usuario
  */
 function escribirMensajeBienvenida($usuario)
@@ -131,9 +131,9 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
- * recibe una cadena de texto y verifica que la cadena de texto sea texto y retorna true si todas son letras
- * @param  string $cadena
- * @return boolean
+ * recibe una cadena de texto y verifica que la cadena de texto sea texto y retorna true si todas son letras 
+ * @param  string $cadena 
+ * @return boolean 
  */
 function esPalabra($cadena)
 {
@@ -150,7 +150,7 @@ function esPalabra($cadena)
 
 /**
  *  ****COMPLETaffa
- * @param VACIO
+ * @param VACIO 
  * @return STRING
  */
 function leerPalabra5Letras()
