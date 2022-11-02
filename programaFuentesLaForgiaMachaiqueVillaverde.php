@@ -136,6 +136,34 @@ function agregarPalabra($unaColeccionPalabras, $unaPalabra){
     */
 return $nuevaColeccionPalabras;
 }
+
+
+//Punto 8
+/** Funcion que retorna el indice de la primera partida ganada
+ * @param array $coleccionPartidas
+ * @param string $nombreJugador
+ * @return int
+ */
+function primeraPartidaGanada($coleccionPartidas,$nombreJugador){
+    // int $indice, $i, $limite
+    // boolean $partidaGanda
+    $limite=count($coleccionPartidas);
+    $$i=0;
+    $partidaGanda=false;
+    while(($i<=$limite)&&(!$partidaGanda)){
+
+        if(($coleccionPartidas[$i]["jugador"]==$nombreJugador) && ($coleccionPartidas[$i]["puntaje"]>0) ){
+            $indice= $i;
+            $partidaGanda=true;       
+        }else{
+            $indice=-1;
+        }
+        $i=$i++;
+    }
+    return $indice;
+}
+
+
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
 /**************************************/
