@@ -138,7 +138,7 @@ return $nuevaColeccionPalabras;
 }
 
 
-//Punto 8
+//Punto 8 resumen jugador
 /** Funcion que retorna el indice de la primera partida ganada
  * @param array $coleccionPartidas
  * @param string $nombreJugador
