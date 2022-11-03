@@ -33,11 +33,11 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 * @param int $max
 * @return int
 */
-function solicitarNumeroEntre($min, $max)
+function solicitarNumeroEntre($min, $max) //Probar con los sigueintes valores, $numero  = 15.5 , numero = "A", numero  = 10 [min15,max20]
 {
     //int $numero
     $numero = trim(fgets(STDIN));
-    while (!is_int($numero) && !($numero >= $min && $numero <= $max)) {
+    while (!is_int($numero) && !($numero >= $min && $numero <= $max)) { //OR
         echo "Debe ingresar un número entre " . $min . " y " . $max . ": ";
         $numero = trim(fgets(STDIN));
     }
@@ -331,6 +331,7 @@ function esIntentoGanado($estructuraPalabraIntento)
 
 /**
  * ****COMPLETAR***** documentación de la intefaz
+ * 
  * 
  */
 function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales necesarios */

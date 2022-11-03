@@ -96,13 +96,13 @@ function seleccionarOpcion(){
 function mostrarDatosDePartida($nroPartida, $unaColeccionPartidas){
 
     echo "*****************************\n";
-    echo "Partida WORDIX $nroPartida : palabra ". $unaColeccionPartidas[$nroPartida]["palabraWordix"]."\n";
-    echo "Jugador: " .$unaColeccionPartidas[$nroPartida]["jugador"]."\n";
-    echo "Puntaje: " .$unaColeccionPartidas[$nroPartida]["puntaje"]. " puntos\n";
+    echo "Partida WORDIX $nroPartida : palabra ". $unaColeccionPartidas[$nroPartida-1]["palabraWordix"]."\n";
+    echo "Jugador: " .$unaColeccionPartidas[$nroPartida-1]["jugador"]."\n";
+    echo "Puntaje: " .$unaColeccionPartidas[$nroPartida-1]["puntaje"]. " puntos\n";
 
-    if ($unaColeccionPartidas[$nroPartida]["puntaje"] != 0) 
+    if ($unaColeccionPartidas[$nroPartida-1]["puntaje"] != 0) 
     {
-        echo "Intento: Adivino la palabra en ".$unaColeccionPartidas[$nroPartida]["intentos"]." intentos\n";
+        echo "Intento: Adivino la palabra en ".$unaColeccionPartidas[$nroPartida-1]["intentos"]." intentos\n";
     } else {
         echo "Intento: No adivino la palabra\n";
 
@@ -121,9 +121,9 @@ function mostrarDatosDePartida($nroPartida, $unaColeccionPartidas){
  */
 function agregarPalabra($unaColeccionPalabras, $unaPalabra){
 
-    $nuevaColeccionPalabras = array_push($unaColeccionPalabras, $unaPalabra);
+     array_push($unaColeccionPalabras, $unaPalabra);
 
-return $nuevaColeccionPalabras;
+return $unaColeccionPalabras;
 }
 
 
