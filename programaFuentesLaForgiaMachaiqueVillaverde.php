@@ -134,20 +134,21 @@ return $nuevaColeccionPalabras;
  * @return int
  */
 function primeraPartidaGanada($coleccionPartidas,$nombreJugador){
-    // int $indice, $i, $limite
-    // boolean $partidaGanda
+    // int $indice, $i, $limite, $partidaGanda
+    
     $limite=count($coleccionPartidas);
     $i=0;
-    $partidaGanda=false;
-    while(($i< $limite)&&(!$partidaGanda)){
+    $partidaGanda=0;
+    while(($i< $limite)&&($partidaGanda==0)){
 
         if(($coleccionPartidas[$i]["jugador"]==$nombreJugador) && ($coleccionPartidas[$i]["puntaje"]>0) ){
             $indice= $i;
-            $partidaGanda=true;       
+            $partidaGanda=1;       
         }else{
             $indice=-1;
+            $i=$i+1;
         }
-        $i=$i++;
+        $i=$i+1;
     }
     return $indice;
 }
