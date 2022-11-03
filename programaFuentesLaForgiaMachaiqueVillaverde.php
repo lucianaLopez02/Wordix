@@ -137,9 +137,9 @@ function primeraPartidaGanada($coleccionPartidas,$nombreJugador){
     // int $indice, $i, $limite
     // boolean $partidaGanda
     $limite=count($coleccionPartidas);
-    $$i=0;
+    $i=0;
     $partidaGanda=false;
-    while(($i<=$limite)&&(!$partidaGanda)){
+    while(($i< $limite)&&(!$partidaGanda)){
 
         if(($coleccionPartidas[$i]["jugador"]==$nombreJugador) && ($coleccionPartidas[$i]["puntaje"]>0) ){
             $indice= $i;
@@ -177,12 +177,12 @@ function resumenJugador($coleccionPartidas,$nombreJugador){
     $resumen["intento5"]=0;
     $resumen["intento6"]=0;
 
-    for($i=0 ; $i <= $cantElementosArray; $i++){
+    for($i=0 ; $i < $cantElementosArray; $i++){
 
         if($coleccionPartidas[$i]["jugador"]== $nombreJugador){
             $resumen["partidas"]=$resumen["partidas"]+1;
             if($coleccionPartidas[$i]["puntaje"] > 0){
-                $resumen["puntaje"]= $coleccionPartidas[$i]["puntaje"];
+                $resumen["puntaje"]= $coleccionPartidas[$i]["puntaje"] + $resumen["puntaje"];
                 $resumen["victorias"]= $resumen["victorias"]+1;
                 if($coleccionPartidas[$i]["intentos"] == 1){
                     $resumen["intento1"]=$resumen["intento1"]+1;
