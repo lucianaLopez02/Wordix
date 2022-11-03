@@ -149,9 +149,9 @@ function esPalabra($cadena)
 }
 
 /**
- *  ****COMPLETaffa
- * @param VACIO 
- * @return STRING
+ * completado
+ * Pide al usuario ingresar una plabra de 5 letras y retorna la palbra
+ * @return string
  */
 function leerPalabra5Letras()
 {

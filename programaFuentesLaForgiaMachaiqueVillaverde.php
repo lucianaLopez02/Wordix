@@ -177,26 +177,26 @@ function resumenJugador($coleccionPartidas,$nombreJugador){
     $resumen["intento4"]=0;
     $resumen["intento5"]=0;
     $resumen["intento6"]=0;
+                                        //$elemenot guarda el arreglo (o elemento)dentro del indice
+    foreach($coleccionPartidas as $i => $elemento){
 
-    for($i=0 ; $i < $cantElementosArray; $i++){
-
-        if($coleccionPartidas[$i]["jugador"]== $nombreJugador){
+        if($elemento["jugador"]== $nombreJugador){
             $resumen["partidas"]=$resumen["partidas"]+1;
-            if($coleccionPartidas[$i]["puntaje"] > 0){
+            if($elemento["puntaje"] > 0){
                 $resumen["puntaje"]= $coleccionPartidas[$i]["puntaje"] + $resumen["puntaje"];
                 $resumen["victorias"]= $resumen["victorias"]+1;
             }
-            if($coleccionPartidas[$i]["intentos"] == 1){
+            if($elemento["intentos"] == 1){
                 $resumen["intento1"]=$resumen["intento1"]+1;
-            }elseif($coleccionPartidas[$i]["intentos"] == 2){
+            }elseif($elemento["intentos"] == 2){
                 $resumen["intento2"]=$resumen["intento2"]+1;
-            }elseif($coleccionPartidas[$i]["intentos"] == 3){
+            }elseif($elemento["intentos"] == 3){
                 $resumen["intento3"]=$resumen["intento3"]+1;
-            }elseif($coleccionPartidas[$i]["intentos"] == 4){
+            }elseif($elemento["intentos"] == 4){
                 $resumen["intento4"]=$resumen["intento4"]+1;
-            }elseif($coleccionPartidas[$i]["intentos"] == 5){
+            }elseif($elemento["intentos"] == 5){
                 $resumen["intento5"]=$resumen["intento5"]+1;
-            }elseif($coleccionPartidas[$i]["intentos"] == 6){
+            }elseif($elemento["intentos"] == 6){
                 $resumen["intento6"]=$resumen["intento6"]+1;
             }
 
