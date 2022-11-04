@@ -208,20 +208,26 @@ function resumenJugador($coleccionPartidas,$nombreJugador){
 
 
 //Punto 10 
-/**
- * Solicita al usuario el nombre de un jugador y lo retorna en minusculas, a la vez se examina que el primer caracter del nombre no sea un numero 
+/** 
+ * Solicita al usuario el nombre de un jugador y lo retorna en minusculas 
  * @return string 
  */
 function solicitarJugador () {
-    /*string $nombreMinuscula, $nombre*/ 
+    /*string $nombreMinuscula, $nombre, boolean $abc */ 
     echo "Ingrese el nombre de un jugador: ";
     $nombre = trim(fgets(STDIN));
-    strlen ($nombre);
-    if ($nombre[0]<> is_string($nombre[0])) {                      /*Lo verifico el jueves con el profe*/                 
-        echo "Ingrese el nombre de un jugador (que el primer caracter sea una letra): ";
-        $nombre=trim(fgets(STDIN));
+    $abc = abecedario ($nombre);                                              /////////Ma falta agrgar el otro modulo para leer el abecederaio, estoy modificandolo 
+    if ($abc == true ) {
+        $nombreMinuscula = strtolower($nombre);
+    } else { 
+    while ( $abc == false ) {                 
+        echo "ERROR. " ;     
+        echo "Ingrese el nombre de un jugador (que el 1° caracter sea una letra): ";                 
+        $nombre = trim(fgets(STDIN));
+        $abc = abecedario ($nombre);
     }
-    $nombreMinuscula = strtolower ($nombre);
+    $nombreMinuscula = strtolower($nombre);
+    }
     return $nombreMinuscula;
 }
 
