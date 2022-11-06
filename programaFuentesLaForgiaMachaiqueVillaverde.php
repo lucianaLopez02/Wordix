@@ -96,13 +96,13 @@ function seleccionarOpcion(){
 function mostrarDatosDePartida($nroPartida, $unaColeccionPartidas){
 
     echo "*****************************\n";
-    echo "Partida WORDIX $nroPartida : palabra ". $unaColeccionPartidas[$nroPartida]["palabraWordix"]."\n";
-    echo "Jugador: " .$unaColeccionPartidas[$nroPartida]["jugador"]."\n";
-    echo "Puntaje: " .$unaColeccionPartidas[$nroPartida]["puntaje"]. " puntos\n";
+    echo "Partida WORDIX $nroPartida : palabra ". $unaColeccionPartidas[$nroPartida-1]["palabraWordix"]."\n";
+    echo "Jugador: " .$unaColeccionPartidas[$nroPartida-1]["jugador"]."\n";
+    echo "Puntaje: " .$unaColeccionPartidas[$nroPartida-1]["puntaje"]. " puntos\n";
 
-    if ($unaColeccionPartidas[$nroPartida]["puntaje"] != 0) 
+    if ($unaColeccionPartidas[$nroPartida-1]["puntaje"] != 0) 
     {
-        echo "Intento: Adivino la palabra en ".$unaColeccionPartidas[$nroPartida]["intentos"]." intentos\n";
+        echo "Intento: Adivino la palabra en ".$unaColeccionPartidas[$nroPartida-1]["intentos"]." intentos\n";
     } else {
         echo "Intento: No adivino la palabra\n";
 
@@ -121,9 +121,9 @@ function mostrarDatosDePartida($nroPartida, $unaColeccionPartidas){
  */
 function agregarPalabra($unaColeccionPalabras, $unaPalabra){
 
-    $nuevaColeccionPalabras = array_push($unaColeccionPalabras, $unaPalabra);
+     array_push($unaColeccionPalabras, $unaPalabra);
 
-return $nuevaColeccionPalabras;
+return $unaColeccionPalabras;
 }
 
 
@@ -177,26 +177,26 @@ function resumenJugador($coleccionPartidas,$nombreJugador){
     $resumen["intento4"]=0;
     $resumen["intento5"]=0;
     $resumen["intento6"]=0;
+                                        //$elemenot guarda el arreglo (o elemento)dentro del indice
+    foreach($coleccionPartidas as $i => $elemento){
 
-    for($i=0 ; $i < $cantElementosArray; $i++){
-
-        if($coleccionPartidas[$i]["jugador"]== $nombreJugador){
+        if($elemento["jugador"]== $nombreJugador){
             $resumen["partidas"]=$resumen["partidas"]+1;
-            if($coleccionPartidas[$i]["puntaje"] > 0){
+            if($elemento["puntaje"] > 0){
                 $resumen["puntaje"]= $coleccionPartidas[$i]["puntaje"] + $resumen["puntaje"];
                 $resumen["victorias"]= $resumen["victorias"]+1;
             }
-            if($coleccionPartidas[$i]["intentos"] == 1){
+            if($elemento["intentos"] == 1){
                 $resumen["intento1"]=$resumen["intento1"]+1;
-            }elseif($coleccionPartidas[$i]["intentos"] == 2){
+            }elseif($elemento["intentos"] == 2){
                 $resumen["intento2"]=$resumen["intento2"]+1;
-            }elseif($coleccionPartidas[$i]["intentos"] == 3){
+            }elseif($elemento["intentos"] == 3){
                 $resumen["intento3"]=$resumen["intento3"]+1;
-            }elseif($coleccionPartidas[$i]["intentos"] == 4){
+            }elseif($elemento["intentos"] == 4){
                 $resumen["intento4"]=$resumen["intento4"]+1;
-            }elseif($coleccionPartidas[$i]["intentos"] == 5){
+            }elseif($elemento["intentos"] == 5){
                 $resumen["intento5"]=$resumen["intento5"]+1;
-            }elseif($coleccionPartidas[$i]["intentos"] == 6){
+            }elseif($elemento["intentos"] == 6){
                 $resumen["intento6"]=$resumen["intento6"]+1;
             }
 
@@ -206,22 +206,49 @@ function resumenJugador($coleccionPartidas,$nombreJugador){
 
 }
 
+//Modulo que acompaña a la funcion solicitarJugador 
+/** 
+ * Verifica que el primer caracter de una palabra sea una letra 
+ * @param string $letra 
+ * @return boolean 
+ */
+function abecedario(string $letra) {
+    /* string $abecedarioA, $abecedarioB, boolean $esLetra, int $i, $stop */
+    $letra1 = substr($letra, 0, 1);
+    $abecedarioA = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "ñ", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];  //Uso de arreglo indexado con variables string 
+    $abecedarioB = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];  //Uso de arreglo indexado con variables string 
+    $stop = count($abecedarioA);
+    $esLetra = false; 
+    $i=0; 
+    while (($i<$stop) && ($esLetra==false)) {
+        if (($letra1 == $abecedarioA[$i])  || ($letra1 == $abecedarioB[$i]) ) {
+            $esLetra = true;
+            $i = $i+1; 
+        } else {
+            $esLetra = false;
+            $i = $i+1; 
+        }
+}
+    return $esLetra;
+}
 
 //Punto 10 
-/**
- * Solicita al usuario el nombre de un jugador y lo retorna en minusculas, a la vez se examina que el primer caracter del nombre no sea un numero 
+/** 
+ * Solicita al usuario el nombre de un jugador y lo retorna en minusculas 
  * @return string 
  */
 function solicitarJugador () {
-    /*string $nombreMinuscula, $nombre*/ 
+    /*string $nombreMinuscula, $nombre, boolean $abc */ 
     echo "Ingrese el nombre de un jugador: ";
     $nombre = trim(fgets(STDIN));
-    strlen ($nombre);
-    if ($nombre[0]<> is_string($nombre[0])) {                      /*Lo verifico el jueves con el profe*/                 
-        echo "Ingrese el nombre de un jugador (que el primer caracter sea una letra): ";
-        $nombre=trim(fgets(STDIN));
+    $abc = abecedario ($nombre);                                              
+    while ( $abc == false ) {                 
+        echo "ERROR. " ;     
+        echo "Ingrese el nombre de un jugador (que el 1° caracter sea una letra): ";                 
+        $nombre = trim(fgets(STDIN));
+        $abc = abecedario ($nombre);
     }
-    $nombreMinuscula = strtolower ($nombre);
+    $nombreMinuscula = strtolower($nombre) ;
     return $nombreMinuscula;
 }
 

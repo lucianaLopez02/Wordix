@@ -33,11 +33,11 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 * @param int $max
 * @return int
 */
-function solicitarNumeroEntre($min, $max)
+function solicitarNumeroEntre($min, $max) //Probar con los sigueintes valores, $numero  = 15.5 , numero = "A", numero  = 10 [min15,max20]
 {
     //int $numero
     $numero = trim(fgets(STDIN));
-    while (!is_int($numero) && !($numero >= $min && $numero <= $max)) {
+    while (!is_int($numero) && !($numero >= $min && $numero <= $max)) { //OR
         echo "Debe ingresar un número entre " . $min . " y " . $max . ": ";
         $numero = trim(fgets(STDIN));
     }
@@ -149,9 +149,15 @@ function esPalabra($cadena)
 }
 
 /**
+<<<<<<< HEAD
  *  ****COMPLETaffa
  * 
  * @return STRING
+=======
+ * completado
+ * Pide al usuario ingresar una plabra de 5 letras y retorna la palbra
+ * @return string
+>>>>>>> 4f1d972d8aea03e66150da99f1bedee9c896d531
  */
 function leerPalabra5Letras()
 {
@@ -331,6 +337,7 @@ function esIntentoGanado($estructuraPalabraIntento)
 
 /**
  * ****COMPLETAR***** documentación de la intefaz
+ * 
  * 
  */
 function obtenerPuntajeWordix($intento, $palabra)  /* ****COMPLETAR***** parámetros formales necesarios */
