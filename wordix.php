@@ -150,7 +150,7 @@ function esPalabra($cadena)
 
 /**
  *  ****COMPLETaffa
- * @param VACIO 
+ * 
  * @return STRING
  */
 function leerPalabra5Letras()
@@ -333,12 +333,57 @@ function esIntentoGanado($estructuraPalabraIntento)
  * ****COMPLETAR***** documentación de la intefaz
  * 
  */
-function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales necesarios */
+function obtenerPuntajeWordix($intento, $palabra)  /* ****COMPLETAR***** parámetros formales necesarios */
 {
-
+    $puntaje = 0;
+    if ($intento < 7) {
+        # code...
+    
     /* ****COMPLETAR***** cuerpo de la función*/
-    return 0;
+    switch ($intento) {
+        case 1:
+            $puntaje = 6;
+            break;
+        case 2:
+            $puntaje = 5;
+            break;
+        case 3:
+            $puntaje = 4;
+            break;
+        case 4:
+            $puntaje = 3;
+            break;
+        case 5:
+            $puntaje = 2;
+            break;
+        case 6:
+            $puntaje = 1;
+            break;
+        
+    }
+
+     for($i = 0; $i < strlen($palabra); $i++){
+                     
+                    $letra = $palabra[$i];
+                    
+        if ($letra == "a" || $letra == "e" || $letra == "i"  || $letra == "o"  || $letra == "u" ) {
+                    $puntaje = $puntaje + 1;
+                    
+            } elseif($letra <= "m"){
+                    
+                    $puntaje = $puntaje + 2;
+                } else{
+                    
+                    $puntaje = $puntaje + 3;
+                }
+     }
+    }
+    return $puntaje;
 }
+
+
+
+
 
 /**
  * Dada una palabra para adivinar, juega una partida de wordix intentando que el usuario adivine la palabra.
