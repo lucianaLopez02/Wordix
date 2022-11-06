@@ -206,16 +206,17 @@ function resumenJugador($coleccionPartidas,$nombreJugador){
 
 }
 
+//Modulo que acompaña a la funcion solicitarJugador 
 /** 
- * Determina que el primer caracter de un string sea una letra 
+ * Verifica que el primer caracter de una palabra sea una letra 
  * @param string $letra 
  * @return boolean 
  */
 function abecedario(string $letra) {
     /* string $abecedarioA, $abecedarioB, boolean $esLetra */
     $letra1 = substr($letra, 0, 1);
-    $abecedarioA = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "ñ", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];  //Uso de arreglo indexeado con variables string 
-    $abecedarioB = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];  //Uso de arreglo indexeado con variables string 
+    $abecedarioA = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "ñ", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];  //Uso de arreglo indexado con variables string 
+    $abecedarioB = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];  //Uso de arreglo indexado con variables string 
     $stop = count($abecedarioA);
     $esLetra = false; 
     $i=0; 
