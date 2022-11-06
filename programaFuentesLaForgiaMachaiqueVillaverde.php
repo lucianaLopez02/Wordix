@@ -214,8 +214,8 @@ function resumenJugador($coleccionPartidas,$nombreJugador){
 function abecedario(string $letra) {
     /* string $abecedarioA, $abecedarioB, boolean $esLetra */
     $letra1 = substr($letra, 0, 1);
-    $abecedarioA = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "ñ", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; 
-    $abecedarioB = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    $abecedarioA = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "ñ", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];  //Uso de arreglo indexeado con variables string 
+    $abecedarioB = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];  //Uso de arreglo indexeado con variables string 
     $stop = count($abecedarioA);
     $esLetra = false; 
     $i=0; 
@@ -240,7 +240,7 @@ function solicitarJugador () {
     /*string $nombreMinuscula, $nombre, boolean $abc */ 
     echo "Ingrese el nombre de un jugador: ";
     $nombre = trim(fgets(STDIN));
-    $abc = abecedario ($nombre);                                              /////////Ma falta agrgar el otro modulo para leer el abecederaio, estoy modificandolo 
+    $abc = abecedario ($nombre);                                              
     while ( $abc == false ) {                 
         echo "ERROR. " ;     
         echo "Ingrese el nombre de un jugador (que el 1° caracter sea una letra): ";                 
