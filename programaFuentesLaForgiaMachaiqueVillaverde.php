@@ -252,7 +252,34 @@ function solicitarJugador () {
     return $nombreMinuscula;
 }
 
-
+//PUNTO 11 
+/**
+ * Muestra una coleccion de partidas ordenadas por el nombre del jugador y por la palabra
+ * @param -- $partida1 
+ * @param -- $partida2
+ * @return int $orden  
+ */
+function ordenColeccionPartidas ($partida1, $partida2) {
+    /*int $orden */  
+    if ($partida1["jugador"] == $partida2["jugador"]) {
+        if ($partida1["palabraWordix"] == $partida2["palabraWordix"]) {
+           $orden = 0;
+        } elseif ($partida1 ["palabraWordix"] < $partida2["palabraWordix"]) {               
+            $orden = -1; 
+        } else {
+            $orden = 1; 
+        }
+    } elseif ($partida1["jugador"] < $partida2["jugador"]) {
+        if ($partida1["palabraWordix"] < $partida2["palabraWordix"]) {
+            $orden = -1; 
+        } else {
+            $orden = 1; 
+        }
+    }  else {
+         $orden = 1; 
+}
+return $orden;                                                                       //Se usa el retorno para poder usar el uasort 
+}
 
 
 /**************************************/
