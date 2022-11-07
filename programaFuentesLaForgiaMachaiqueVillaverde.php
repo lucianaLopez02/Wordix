@@ -278,9 +278,11 @@ function ordenColeccionPartidas ($partida1, $partida2) {
     }  else {
          $orden = 1; 
 }
-return $orden;                                                                       //Se usa el retorno para poder usar el uasort 
+return $orden;                                                                       //Se utiliza el retorno para poder usar el uasort 
 }
 
+uasort ($coleccionPartidas, 'ordenColeccionPartidas'); 
+print_r($coleccionPartidas) ;
 
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
