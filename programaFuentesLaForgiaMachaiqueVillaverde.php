@@ -40,7 +40,7 @@ function cargarColeccionPalabras()
 
 //EJEMPLO DE LA FUNCIÓN 2. Punto 2
 /**
-* inicializa una estrutucta de partidas y retorna una coleccion de partidas
+* inicializa una estructura de partidas y retorna una coleccion de partidas
 * @return array
 */
 function cargarPartidas(){
@@ -90,7 +90,7 @@ function seleccionarOpcion(){
 // Mostrar datos de partida. Punto 6
 /**
  * dado un numero de partida mostrar por pantalla los datos de esa partida
- * @param $nroPartida?
+ * @param $nroPartida
  * @param array unaColeccionPartidas
  */
 function mostrarDatosDePartida($nroPartida, $unaColeccionPartidas){
@@ -120,7 +120,7 @@ function mostrarDatosDePartida($nroPartida, $unaColeccionPartidas){
  * @return array 
  */
 function agregarPalabra($unaColeccionPalabras, $unaPalabra){
-
+    //Agregar funcion para convertir palabra en mayuscula
      array_push($unaColeccionPalabras, $unaPalabra);
 
 return $unaColeccionPalabras;
@@ -296,7 +296,7 @@ print_r($coleccionPartidas) ;
 
 //Proceso:
 
-$partida = jugarWordix("MELON", strtolower("MaJo")); //*opcion jugar partida para majo con una palabra melon
+//$partida = jugarWordix("MELON", strtolower("MaJo")); //*opcion jugar partida para majo con una palabra melon
 //print_r($partida);
 //imprimirResultado($partida);
 
@@ -312,26 +312,96 @@ del caso siguiente.
 Un caso especial es el default. Este caso coincide con cualquier cosa que no se haya correspondido por los otros casos.
 */
 
-/*
-do {
-    $opcion = ...;
 
+do {
     
+    $opcion = seleccionarOpcion(); //Invoco a la funcion seleccionarOpcion
+
     switch ($opcion) {
         case 1: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
+            //Caso 1: Jugar al wordix con una palabra elegida.
+
+            $esNombreUsuario = solicitarJugador(); 
+
+            //$esPalabraWordix = ();
+
+            
+            jugarWordix($esPalabraWordix, $esNombreUsuario);//Invocando la funcion jugar Wordix
+            cargarPartidas();
 
             break;
         case 2: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
-
+            $esNombreUsuario = solicitarJugador(); 
+            
             break;
         case 3: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
+            /*
+            Se le solicita al usuario un número de partida y se muestra en pantalla con el
+            siguiente formato:
+             */
+
+            $nroPartida = solicitarNumeroEntre(0,9);
+
+            $unaColeccionPartidas = cargarPartidas();
+
+            mostrarDatosDePartida($nroPartida, $unaColeccionPartidas);
 
             break;
         
-            //...
+        case 4:
+            /*
+            Se le solicita al usuario un nombre de jugador y se muestra en
+            pantalla el primer juego ganado por dicho jugador. Por ejemplo 
+            si el usuario ingresa el nombre “Majo”
+            */
+
+            $esNombreUsuario = solicitarJugador(); 
+
+            $unaColeccionPartidas = cargarPartidas();
+
+            $unIndice = primeraPartidaGanada($unaColeccionPartidas, $esNombreUsuario ); 
+
+            mostrarDatosDePartida($unIndice , $unaColeccionPartidas);
+            
+            break;
+        case 5:
+        /*
+        Se le solicita al usuario que ingrese un nombre de jugador 
+        y se muestra la siguiente información:
+        */
+        $esNombreUsuario = solicitarJugador(); 
+
+        
+            break;
+        case 6:
+        /*
+        Se mostrará en pantalla la estructura ordenada 
+        alfabéticamente por jugador y por palabra (ser ordena 
+        una vez, por ambos criterios), utilizando la función predefinida
+        uasort de php, y la función predefinida print_r.
+        */
+
+        
+        break;
+
+        case 7:
+            /*
+            Debe solicitar una palabra de 5 letras al usuario y agregarla
+            en mayúsculas a la colección de palabras que posee Wordix, para
+            que el usuario pueda utilizarla para jugar.
+            */
+            $palabra = leerPalabra5Letras(); // Funcion para solicitar una palabra de 5 letras
+
+            $esUnaPalabra = esPalabra($palabra); //Funcion que verifica que la palabra sea texto
+
+            $coleccionPalabras = cargarColeccionPalabras(); 
+
+            agregarPalabra($coleccionPalabras, $esUnaPalabra);
+
+            break;
     }
-} while ($opcion != X);
-*/
+} while ($opcion != 8);
+
