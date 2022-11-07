@@ -272,6 +272,16 @@ $partida = jugarWordix("MELON", strtolower("MaJo")); //*opcion jugar partida par
 //imprimirResultado($partida);
 
 
+/*
+La sentencia switch es similar a una serie de sentencias IF en la misma expresión. 
+La sentencia switch ejecuta línea por línea (en realidad, sentencia por sentencia). Al principio, 
+ningún código es ejecutado. Solo cuando se encuentra una sentencia case cuya expresión se evalúa a un valor 
+que coincida con el valor de la con un valor que coincide con el valor de la expresión switch
+PHP continúa ejecutando las sentencias hasta el final del bloque switch, o hasta la primera vez que vea una sentencia break. 
+Si no se escribe una sentencia break al final de la lista de sentencias de un caso, PHP seguirá ejecutando las sentencias 
+del caso siguiente.
+Un caso especial es el default. Este caso coincide con cualquier cosa que no se haya correspondido por los otros casos.
+*/
 
 /*
 do {
