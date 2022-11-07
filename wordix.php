@@ -149,15 +149,9 @@ function esPalabra($cadena)
 }
 
 /**
-<<<<<<< HEAD
- *  ****COMPLETaffa
- * 
- * @return STRING
-=======
  * completado
  * Pide al usuario ingresar una plabra de 5 letras y retorna la palbra
  * @return string
->>>>>>> 4f1d972d8aea03e66150da99f1bedee9c896d531
  */
 function leerPalabra5Letras()
 {
@@ -337,11 +331,14 @@ function esIntentoGanado($estructuraPalabraIntento)
 
 /**
  * ****COMPLETAR***** documentación de la intefaz
- * 
- * 
+ * Funcion que calcula el puntaje de wordix 
+ * @param int $intento
+ * @param string $palabra
+ * @return int
  */
 function obtenerPuntajeWordix($intento, $palabra)  /* ****COMPLETAR***** parámetros formales necesarios */
 {
+    // int $puntaje
     $puntaje = 0;
     if ($intento < 7) {
         # code...
