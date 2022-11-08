@@ -51,11 +51,11 @@ function cargarPartidas(){
     $coleccionPartidas[2] = ["palabraWordix" => "QUESO","jugador" => "luna","intentos" => 6 ,"puntaje" => 10];
     $coleccionPartidas[3] = ["palabraWordix" => "TIGRE","jugador" => "trufa48","intentos" => 5 ,"puntaje" => 12];
     $coleccionPartidas[4] = ["palabraWordix" => "PIANO","jugador" => "luna","intentos" => 6 ,"puntaje" => 5];
-    $coleccionPartidas[5] = ["palabraWordix" => "CASAS","jugador" => "trufa48","intentos" => 3 ,"puntaje" => 11];
+    $coleccionPartidas[5] = ["palabraWordix" => "CASAS","jugador" => "trufa48","intentos" => 3 ,"puntaje" => 0];
     $coleccionPartidas[6] = ["palabraWordix" => "YUYOS","jugador" => "luna","intentos" => 6 ,"puntaje" => 15];
     $coleccionPartidas[7] = ["palabraWordix" => "HUEVO","jugador" => "trufa48","intentos" => 1 ,"puntaje" => 8];
     $coleccionPartidas[8] = ["palabraWordix" => "GATOS","jugador" => "zoe","intentos" => 2 ,"puntaje" => 6];
-    $coleccionPartidas[9] = ["palabraWordix" => "LAPIZ","jugador" => "luna","intentos" => 2 ,"puntaje" => 5];
+    $coleccionPartidas[9] = ["palabraWordix" => "LAPIZ","jugador" => "luna","intentos" => 2 ,"puntaje" => 0];
 
     return $coleccionPartidas;
 }
@@ -90,19 +90,19 @@ function seleccionarOpcion(){
 // Mostrar datos de partida. Punto 6
 /**
  * dado un numero de partida mostrar por pantalla los datos de esa partida
- * @param $nroPartida
- * @param array unaColeccionPartidas
+ * @param int $nroPartida
+ * @param array $unaColeccionPartidas
  */
 function mostrarDatosDePartida($nroPartida, $unaColeccionPartidas){
 
     echo "*****************************\n";
-    echo "Partida WORDIX $nroPartida : palabra ". $unaColeccionPartidas[$nroPartida-1]["palabraWordix"]."\n";
-    echo "Jugador: " .$unaColeccionPartidas[$nroPartida-1]["jugador"]."\n";
-    echo "Puntaje: " .$unaColeccionPartidas[$nroPartida-1]["puntaje"]. " puntos\n";
+    echo "Partida WORDIX $nroPartida : palabra ". $unaColeccionPartidas[$nroPartida]["palabraWordix"]."\n";
+    echo "Jugador: " .$unaColeccionPartidas[$nroPartida]["jugador"]."\n";
+    echo "Puntaje: " .$unaColeccionPartidas[$nroPartida]["puntaje"]. " puntos\n";
 
     if ($unaColeccionPartidas[$nroPartida-1]["puntaje"] != 0) 
     {
-        echo "Intento: Adivino la palabra en ".$unaColeccionPartidas[$nroPartida-1]["intentos"]." intentos\n";
+        echo "Intento: Adivino la palabra en ".$unaColeccionPartidas[$nroPartida]["intentos"]." intentos\n";
     } else {
         echo "Intento: No adivino la palabra\n";
 
@@ -148,7 +148,7 @@ function primeraPartidaGanada($coleccionPartidas,$nombreJugador){
             $indice=-1;
             $i=$i+1;
         }
-        $i=$i+1;
+        
     }
     return $indice;
 }
@@ -281,8 +281,6 @@ function ordenColeccionPartidas ($partida1, $partida2) {
 return $orden;                                                                       //Se utiliza el retorno para poder usar el uasort 
 }
 
-uasort ($coleccionPartidas, 'ordenColeccionPartidas'); 
-print_r($coleccionPartidas) ;
 
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
@@ -327,8 +325,13 @@ switch ($opcion) {
 
         echo "Ingrese un nro de palabra para jugar: "; // Solicita un número de palabra para jugar
         $posicionPalabra =  trim(fgets(STDIN));
-
-
+        $anteriorPosicion=" ";// Hacer un arrego apara guardar las palabras utilizadas
+        while($posicionPalabra==$anteriorPosicion){
+        if($posicionPalabra==$anteriorPosicion){
+            echo "Usted ya utilizo esta palabra. Ingrese otra: ";
+            $posicionPalabra =  trim(fgets(STDIN));
+        }
+    }
         if ($posicionPalabra > count($coleccionPalabras)) {
             echo "no es un nro de palabra correcto";
         } else {
@@ -371,21 +374,32 @@ switch ($opcion) {
         */
 
         $esNombreUsuario = solicitarJugador();
-
-        if ($esNombreUsuario != $esColeccionPartidas["nombre"]) {
-            echo "No existe jugador";
-        } else {
+        $stop=count($esColeccionPartidas);
+        $i=0;
+        $encontrado=false;
+        while($i<$stop && $encontrado==false){
+        if ($esNombreUsuario == $esColeccionPartidas[$i]["jugador"]) {
+            
             $posicionPrimeraPartida = primeraPartidaGanada($esColeccionPartidas, $esNombreUsuario);
 
             //echo "posicion: ".$posicionPrimeraPartida;
 
-            if ($posicionPrimeraPartida != -1) {
+            if ($posicionPrimeraPartida == $i) {
                 mostrarDatosDePartida($posicionPrimeraPartida, $esColeccionPartidas);
             } else {
-                echo "El jugador $esNombreUsuario no ganó ninguna partida";
+                echo "El jugador $esNombreUsuario no ganó ninguna partida\n";
             }
+            $encontrado=true;
+            
+           
+        } else {
+            $i=$i+1;
         }
-
+        
+    }
+    if($i==$stop && $encontrado==false){
+        echo "No existe jugador\n";
+        }
 
         break;
     case 5:
@@ -394,10 +408,10 @@ switch ($opcion) {
         y se muestra la siguiente información:
         */
         $esNombreUsuario = solicitarJugador();
-            //error si no existe jugador
+            //error si no existe jugador, recorrer con un while el arreglo para verifcar que este el nombre
         $resumen = resumenJugador($esColeccionPartidas, $esNombreUsuario);
         //print_r($resumen);
-        $porcentajeVictorias = $resumen["victorias"] /  $resumen["partidas"] * 100;
+        $porcentajeVictorias = (int)($resumen["victorias"] * 100 /  $resumen["partidas"]);
         echo "*********************************\n";
         echo "Jugador: " .$resumen["nombre"] ."\n" ;
         echo "Partidas:". $resumen["partidas"]  ."\n";
@@ -421,6 +435,7 @@ switch ($opcion) {
         una vez, por ambos criterios), utilizando la función predefinida
         uasort de php, y la función predefinida print_r.
         */
+        
         uasort ($esColeccionPartidas, 'ordenColeccionPartidas'); 
         print_r($esColeccionPartidas) ;
         
