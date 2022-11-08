@@ -370,10 +370,10 @@ function obtenerPuntajeWordix($intento, $palabra)  /* ****COMPLETAR***** paráme
                      
                     $letra = $palabra[$i];
                     
-        if ($letra == "a" || $letra == "e" || $letra == "i"  || $letra == "o"  || $letra == "u" ) {
+        if ($letra == "A" || $letra == "E" || $letra == "I"  || $letra == "O"  || $letra == "U" ) {
                     $puntaje = $puntaje + 1;
                     
-            } elseif($letra <= "m"){
+            } elseif($letra <= "M"){
                     
                     $puntaje = $puntaje + 2;
                 } else{
