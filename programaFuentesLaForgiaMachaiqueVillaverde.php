@@ -114,16 +114,16 @@ function mostrarDatosDePartida($nroPartida, $unaColeccionPartidas){
 
 // funcion agregarPalabra. Punto 7
 /**
- * agrega una nueva palabra al la coleccionPalabras
+ * agrega una nueva palabra a una colección 
  * @param array $unaColeccionPalabras
  * @param string $unaPalabra 
  * @return array 
  */
-function agregarPalabra($unaColeccionPalabras, $unaPalabra){
+function agregarPalabra($unaColeccion, $unaPalabra){
     //Agregar funcion para convertir palabra en mayuscula
-     array_push($unaColeccionPalabras, $unaPalabra);
+     array_push($unaColeccion, $unaPalabra);
 
-return $unaColeccionPalabras;
+return $unaColeccion;
 }
 
 
@@ -437,7 +437,7 @@ switch ($opcion) {
         */
         
         uasort ($esColeccionPartidas, 'ordenColeccionPartidas'); 
-        print_r($esColeccionPartidas) ;
+        //print_r($esColeccionPartidas) ;
         
         break;
 
