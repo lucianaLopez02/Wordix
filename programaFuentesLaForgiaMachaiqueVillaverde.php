@@ -311,70 +311,108 @@ Si no se escribe una sentencia break al final de la lista de sentencias de un ca
 del caso siguiente.
 Un caso especial es el default. Este caso coincide con cualquier cosa que no se haya correspondido por los otros casos.
 */
-
+$coleccionPalabras = cargarColeccionPalabras(); //invocamos la coleccion de Palabras
+$esColeccionPartidas = cargarPartidas();//invocamos la coleccion de Partidas
 
 do {
     
     $opcion = seleccionarOpcion(); //Invoco a la funcion seleccionarOpcion
 
-    switch ($opcion) {
-        case 1: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
-            //Caso 1: Jugar al wordix con una palabra elegida.
+switch ($opcion) {
+    case 1:
+        //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
+        //Caso 1: Jugar al wordix con una palabra elegida.
 
-            $esNombreUsuario = solicitarJugador(); 
+        $esNombreUsuario = solicitarJugador(); //Solicita nombre a usuario
 
-            //$esPalabraWordix = ();
+        echo "Ingrese un nro de palabra para jugar: "; // Solicita un número de palabra para jugar
+        $posicionPalabra =  trim(fgets(STDIN));
 
-            
+
+        if ($posicionPalabra > count($coleccionPalabras)) {
+            echo "no es un nro de palabra correcto";
+        } else {
+            $esPalabraWordix = $coleccionPalabras[$posicionPalabra-1]; //Accedemos a la posicion de la palabra
             jugarWordix($esPalabraWordix, $esNombreUsuario);//Invocando la funcion jugar Wordix
-            cargarPartidas();
+        }
 
-            break;
-        case 2: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
-            $esNombreUsuario = solicitarJugador(); 
-            
-            break;
-        case 3: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
-            /*
-            Se le solicita al usuario un número de partida y se muestra en pantalla con el
-            siguiente formato:
-             */
+        cargarPartidas(); //Guardando la partida
 
-            $nroPartida = solicitarNumeroEntre(0,9);
+        break;
 
-            $unaColeccionPartidas = cargarPartidas();
+    case 2:
+        //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
+        //Caso 2: Jugar al Wordix con una palabra aleatoria
 
-            mostrarDatosDePartida($nroPartida, $unaColeccionPartidas);
+        $esNombreUsuario = solicitarJugador(); //Solicita el nombre de usuario
 
-            break;
-        
-        case 4:
-            /*
-            Se le solicita al usuario un nombre de jugador y se muestra en
-            pantalla el primer juego ganado por dicho jugador. Por ejemplo 
-            si el usuario ingresa el nombre “Majo”
-            */
-
-            $esNombreUsuario = solicitarJugador(); 
-
-            $unaColeccionPartidas = cargarPartidas();
-
-            $unIndice = primeraPartidaGanada($unaColeccionPartidas, $esNombreUsuario ); 
-
-            mostrarDatosDePartida($unIndice , $unaColeccionPartidas);
-            
-            break;
-        case 5:
+        $posicionPalabra;
+        break;
+    case 3:
+        //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
         /*
-        Se le solicita al usuario que ingrese un nombre de jugador 
+        Se le solicita al usuario un número de partida y se muestra en pantalla con el
+        siguiente formato:
+         */
+
+        echo "Ingrese numero de partida: ";
+
+        $nroPartida = solicitarNumeroEntre(0, 9);
+        
+        mostrarDatosDePartida($nroPartida, $esColeccionPartidas);
+
+        break;
+
+    case 4:
+        /*
+        Se le solicita al usuario un nombre de jugador y se muestra en
+        pantalla el primer juego ganado por dicho jugador. Por ejemplo
+        si el usuario ingresa el nombre “Majo”
+        */
+
+        $esNombreUsuario = solicitarJugador();
+
+        if ($esNombreUsuario != $esColeccionPartidas["nombre"]) {
+            echo "No existe jugador";
+        } else {
+            $posicionPrimeraPartida = primeraPartidaGanada($esColeccionPartidas, $esNombreUsuario);
+
+            //echo "posicion: ".$posicionPrimeraPartida;
+
+            if ($posicionPrimeraPartida != -1) {
+                mostrarDatosDePartida($posicionPrimeraPartida, $esColeccionPartidas);
+            } else {
+                echo "El jugador $esNombreUsuario no ganó ninguna partida";
+            }
+        }
+
+
+        break;
+    case 5:
+        /*
+        Se le solicita al usuario que ingrese un nombre de jugador
         y se muestra la siguiente información:
         */
-        $esNombreUsuario = solicitarJugador(); 
+        $esNombreUsuario = solicitarJugador();
+            //error si no existe jugador
+        $resumen = resumenJugador($esColeccionPartidas, $esNombreUsuario);
+        //print_r($resumen);
+        $porcentajeVictorias = $resumen["victorias"] /  $resumen["partidas"] * 100;
+        echo "*********************************\n";
+        echo "Jugador: " .$resumen["nombre"] ."\n" ;
+        echo "Partidas:". $resumen["partidas"]  ."\n";
+        echo "Puntaje Total: " . $resumen["puntaje"] ."\n";
+        echo "Victorias:" .$resumen["victorias"]. "\n";
+        echo "Porcentaje Victorias: $porcentajeVictorias % \n";
+        echo "Adivinadas: \n";
+        echo " Intento 1: ".$resumen["intento1"]."\n";
+        echo " Intento 2: ".$resumen["intento2"]."\n";
+        echo " Intento 3: ".$resumen["intento3"]."\n";
+        echo " Intento 4: ".$resumen["intento4"]."\n";
+        echo " Intento 5: ".$resumen["intento5"]."\n";
+        echo " Intento 6: ".$resumen["intento6"]."\n";
+        echo "*********************************\n";
 
-        
             break;
         case 6:
         /*
@@ -383,7 +421,8 @@ do {
         una vez, por ambos criterios), utilizando la función predefinida
         uasort de php, y la función predefinida print_r.
         */
-
+        uasort ($esColeccionPartidas, 'ordenColeccionPartidas'); 
+        print_r($esColeccionPartidas) ;
         
         break;
 
@@ -395,13 +434,12 @@ do {
             */
             $palabra = leerPalabra5Letras(); // Funcion para solicitar una palabra de 5 letras
 
-            $esUnaPalabra = esPalabra($palabra); //Funcion que verifica que la palabra sea texto
+            //$esUnaPalabra = esPalabra($palabra); //Funcion que verifica que la palabra sea texto
 
-            $coleccionPalabras = cargarColeccionPalabras(); 
+            $coleccionPalabras = agregarPalabra($coleccionPalabras, $palabra); //Agrega la palabra a la colección
 
-            agregarPalabra($coleccionPalabras, $esUnaPalabra);
-
+            echo "Palabra $palabra agregada! ";
+            //print_r($coleccionPalabras);
             break;
     }
 } while ($opcion != 8);
-
