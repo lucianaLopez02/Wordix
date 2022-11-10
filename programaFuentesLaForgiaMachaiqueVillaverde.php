@@ -281,6 +281,21 @@ function ordenColeccionPartidas ($partida1, $partida2) {
 return $orden;                                                                       //Se utiliza el retorno para poder usar el uasort 
 }
 
+//funcion para saber si el jugador ya jugo con la palabra
+/**
+ * Determinar si el nro de palabra ya fue jugada por el jugador
+ * @param string $nombreJugador
+ * @param int $nroPalabra
+ * @param array $coleccionPalabras
+ * @param array $coleccionPartidas 
+ * @return int
+ */
+function compararPalabra(){
+    $nroPalabra= 0;
+    return $nroPalabra;
+}
+
+
 
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
@@ -350,6 +365,7 @@ switch ($opcion) {
         //print_r($resumenPartidaJugada);
         //print_r($esColeccionPartidas);
         break;
+
 
     case 2:
         //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
