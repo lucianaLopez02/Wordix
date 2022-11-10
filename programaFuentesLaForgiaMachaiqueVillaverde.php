@@ -310,6 +310,10 @@ function palabraUsada($nombreJugador,$nroPalabra,$coleccionPartidas,$coleccionPa
 /**************************************/
 
 //Declaración de variables:
+//string $esNombreUsuario, $palabra                                                                                                                  //Falta declaracion del caso 1
+//int $opcion, $cantPartidas, $nroPartida, $stop, $i, $posicionPrimeraPartida, $n, $indice, $encontrado, $porcentajeVictorias                          
+//boolean $encontrado
+//array $coleccionPalabras, $esColeccionPartidas, $resumenPartidaJugada, $indicePalabraAletorio, $resumen, $coleccionPalabra                     
 
 
 //Inicialización de variables:
@@ -382,6 +386,7 @@ switch ($opcion) {
         //print_r($resumenPartidaJugada);
         //print_r($esColeccionPartidas);
         break;
+
 
     case 2:
         //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
