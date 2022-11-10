@@ -305,7 +305,7 @@ function compararPalabra(){
 //string $esNombreUsuario, $palabra                                                                                                                  //Falta declaracion del caso 1
 //int $opcion, $cantPartidas, $nroPartida, $stop, $i, $posicionPrimeraPartida, $n, $indice, $encontrado, $porcentajeVictorias                          
 //boolean $encontrado
-//array $coleccionPalabras, $esColeccionPartidas, $resumenPartidaJugada, $indicePalabraAletorio, $resumen, $coleccionPalabra  
+//array $coleccionPalabras, $esColeccionPartidas, $resumenPartidaJugada, $indicePalabraAletorio, $resumen, $coleccionPalabra                     
 
 
 //Inicialización de variables:
