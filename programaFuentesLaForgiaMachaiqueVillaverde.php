@@ -355,7 +355,7 @@ switch ($opcion) {
         $estaUsada=palabraUsada($esNombreUsuario,$posicionPalabra-1,$esColeccionPartidas,$coleccionPalabras);
         $cont=0;
         $limite=count($coleccionPalabras);
-        while($estaUsada==1 && $cont<$limite){
+        while($estaUsada==1 && $cont<=$limite){
             if($cont==$limite){
                 echo "Usted ya uso todas las palabras";
                 $estaUsada=0;
