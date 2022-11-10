@@ -281,8 +281,29 @@ function ordenColeccionPartidas ($partida1, $partida2) {
 return $orden;                                                                       //Se utiliza el retorno para poder usar el uasort 
 }
 
+/**
+ * Funcion que verifica si se uso una palabra
+ * @param string $nombreJugador
+ * @param int $nroPalabra
+ * @param array $coleccionPartidas
+ * @param array $coleccionPalabras
+ * @return int
+ */
+function palabraUsada($nombreJugador,$nroPalabra,$coleccionPartidas,$coleccionPalabras){
+    $stop=count($coleccionPartidas);
+    $i=0;
+    $usado=0;
+    while($i<$stop && $usado==0){
+        if($nombreJugador==$coleccionPartidas[$i]["jugador"] && 
+        $coleccionPalabras[$nroPalabra]==$coleccionPartidas[$i]["palabraWordix"]){
+            $usado=1;
+        }else{
+            $i=$i+1;
+        }
+    }
+    return $usado;
 
-
+}
 
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
@@ -327,13 +348,26 @@ switch ($opcion) {
 
         echo "Ingrese un nro de palabra para jugar: "; // Solicita un número de palabra para jugar
         $posicionPalabra =  trim(fgets(STDIN));
-        //$anteriorPosicion=" ";// preguntar si hacer un arrego apara guardar las palabras utilizadas
-        while ($posicionPalabra==$anteriorPosicion) {
-            if ($posicionPalabra==$anteriorPosicion) {
-                echo "Usted ya utilizo esta palabra. Ingrese otra: ";
-                $posicionPalabra =  trim(fgets(STDIN));
+        $estaUsada=palabraUsada($esNombreUsuario,$posicionPalabra-1,$esColeccionPartidas,$coleccionPalabras);
+        $cont=0;
+        $limite=count($coleccionPalabras);
+        while($estaUsada==1 && $cont<$limite){
+            if($cont==$limite){
+                echo "Usted ya uso todas las palabras";
+                $estaUsada=0;
             }
+            if($posicionPalabra<$limite){
+            echo "Ustded ya uso esta palabra. Seleccione otra: ";
+            $posicionPalabra =  trim(fgets(STDIN));
+            $estaUsada=palabraUsada($esNombreUsuario,$posicionPalabra-1,$esColeccionPartidas,$coleccionPalabras);
+            $cont=$cont+1;
+        }else{
+            echo "No es un nro de palabra correcto. Ingrese otro: ";
+            $posicionPalabra =  trim(fgets(STDIN));
+
         }
+        }
+        
         if ($posicionPalabra > count($coleccionPalabras)) {
             echo "no es un nro de palabra correcto";
         } else {
