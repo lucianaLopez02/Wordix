@@ -287,6 +287,10 @@ return $orden;                                                                  
 /**************************************/
 
 //Declaración de variables:
+//string $esNombreUsuario, $palabra 
+//int $opcion, $cantPartidas, $nroPartida, $stop, $i, $posicionPrimeraPartida, $n, $indice, $encontrado, $porcentajeVictorias                                                                                         //Falta declaracion del caso 1
+//float $
+//boolean $encontrado, 
 
 
 //Inicialización de variables:
