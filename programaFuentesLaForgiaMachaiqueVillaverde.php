@@ -325,7 +325,7 @@ switch ($opcion) {
 
         echo "Ingrese un nro de palabra para jugar: "; // Solicita un número de palabra para jugar
         $posicionPalabra =  trim(fgets(STDIN));
-        $anteriorPosicion=" ";// Hacer un arrego apara guardar las palabras utilizadas
+        //$anteriorPosicion=" ";// preguntar si hacer un arrego apara guardar las palabras utilizadas
         while ($posicionPalabra==$anteriorPosicion) {
             if ($posicionPalabra==$anteriorPosicion) {
                 echo "Usted ya utilizo esta palabra. Ingrese otra: ";
@@ -337,6 +337,7 @@ switch ($opcion) {
         } else {
             $esPalabraWordix = $coleccionPalabras[$posicionPalabra-1]; //Accedemos a la posicion de la palabra
             $resumenPartidaJugada = jugarWordix($esPalabraWordix, $esNombreUsuario);//Invocando la funcion jugar Wordix
+            $anteriorPosicion=$posicionPalabra;
         }
 
 
@@ -370,10 +371,10 @@ switch ($opcion) {
         Se le solicita al usuario un número de partida y se muestra en pantalla con el
         siguiente formato:
          */
-
+        $cantPartidas=count($esColeccionPartidas);
         echo "Ingrese numero de partida: ";
 
-        $nroPartida = solicitarNumeroEntre(0, 9);
+        $nroPartida = solicitarNumeroEntre(0,$cantPartidas-1);
         
         mostrarDatosDePartida($nroPartida, $esColeccionPartidas);
 
@@ -423,10 +424,24 @@ switch ($opcion) {
         $esNombreUsuario = solicitarJugador();
             //error si no existe jugador, recorrer con un while el arreglo para verifcar que este el nombre
         $n = count($esColeccionPartidas);
+        echo "cantidad de partidas: ".$n."\n";
         $i = 0;
-        while ($i < $n && $esNombreUsuario == $esColeccionPartidas[$i]["jugador"]) {
-            $resumen = resumenJugador($esColeccionPartidas, $esNombreUsuario);
-        //print_r($resumen);
+        $encontrado=0;
+        $indice=-1;
+        while ($i < $n && $encontrado==0) {
+            echo "posocion: ".$i. "\n";
+            if($esNombreUsuario == $esColeccionPartidas[$i]["jugador"]){
+                $indice=$i;
+                $encontrado=1;
+                
+            }
+            $i=$i+1;
+        }
+            
+        if($encontrado==1){
+        $resumen = resumenJugador($esColeccionPartidas, $esNombreUsuario);
+        
+            //print_r($resumen);
         $porcentajeVictorias = (int)($resumen["victorias"] * 100 /  $resumen["partidas"]);
         echo "*********************************\n";
         echo "Jugador: " .$resumen["nombre"] ."\n" ;
@@ -442,9 +457,8 @@ switch ($opcion) {
         echo " Intento 5: ".$resumen["intento5"]."\n";
         echo " Intento 6: ".$resumen["intento6"]."\n";
         echo "*********************************\n";
-            $i++;
-        }    
-        if($esNombreUsuario != $esColeccionPartidas[$i]["jugador"]){
+          
+        }else{
             echo "Error. Nombre de jugador no encontrado\n"; //Tiene que pedir que ingrese otro nombre de jugador?
         }
             break;
