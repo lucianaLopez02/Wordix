@@ -305,15 +305,62 @@ function palabraUsada($nombreJugador,$nroPalabra,$coleccionPartidas,$coleccionPa
 
 }
 
+
+/**
+ * Funcion que contiene el cuerpo de la opcion 1
+ * @param array $listaPartidas
+ * @param array $listaPalabras
+ * @return array
+ */
+function opcionUno($listaPartidas,$listaPalabras){
+    // array $resumenPartidaJugada
+    $esNombreUsuario = solicitarJugador(); //Solicita nombre a usuario
+
+    echo "Ingrese un nro de palabra para jugar: "; // Solicita un número de palabra para jugar
+    $posicionPalabra =  trim(fgets(STDIN));
+    
+    $estaUsada=palabraUsada($esNombreUsuario,$posicionPalabra-1,$listaPartidas,$listaPalabras);
+    $cont=0;
+    $limite=count($listaPalabras);
+    while($estaUsada==1 && $cont<=$limite){
+        if($cont==$limite){
+            echo "Usted ya uso todas las palabras";
+            $estaUsada=0;
+        }
+        if($posicionPalabra<$limite){
+        echo "Ustded ya uso esta palabra. Seleccione otra: ";
+        $posicionPalabra =  trim(fgets(STDIN));
+        $estaUsada=palabraUsada($esNombreUsuario,$posicionPalabra-1,$listaPartidas,$listaPalabras);
+        $cont=$cont+1;
+    }else{
+        echo "No es un nro de palabra correcto. Ingrese otro: ";
+        $posicionPalabra =  trim(fgets(STDIN));
+
+    }
+    }
+    
+    if ($posicionPalabra > count($listaPalabras)) {
+        echo "no es un nro de palabra correcto";
+    } else {
+        $esPalabraWordix = $listaPalabras[$posicionPalabra-1]; //Accedemos a la posicion de la palabra
+        $resumenPartidaJugada = jugarWordix($esPalabraWordix, $esNombreUsuario);//Invocando la funcion jugar Wordix
+      
+    }
+
+    return $resumenPartidaJugada;
+   
+}
+
+
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
 /**************************************/
 
 //Declaración de variables:
 //string $esNombreUsuario, $palabra                                                                                                                  //Falta declaracion del caso 1
-//int $opcion, $cantPartidas, $nroPartida, $stop, $i, $posicionPrimeraPartida, $n, $indice, $encontrado, $porcentajeVictorias                          
+//int $opcion, $cantPartidas, $nroPartida, $stop, $i, $posicionPrimeraPartida, $n, $indice, $encontrado, $porcentajeVictorias, $indicePalabraAletorio,                       
 //boolean $encontrado
-//array $coleccionPalabras, $esColeccionPartidas, $resumenPartidaJugada, $indicePalabraAletorio, $resumen, $coleccionPalabra                     
+//array $coleccionPalabras, $esColeccionPartidas, $resumenPartidaJugada, $resumen, $coleccionPalabra                     
 
 
 //Inicialización de variables:
@@ -347,44 +394,13 @@ switch ($opcion) {
     case 1:
         //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
         //Caso 1: Jugar al wordix con una palabra elegida.
-
-        $esNombreUsuario = solicitarJugador(); //Solicita nombre a usuario
-
-        echo "Ingrese un nro de palabra para jugar: "; // Solicita un número de palabra para jugar
-        $posicionPalabra =  trim(fgets(STDIN));
-        $estaUsada=palabraUsada($esNombreUsuario,$posicionPalabra-1,$esColeccionPartidas,$coleccionPalabras);
-        $cont=0;
-        $limite=count($coleccionPalabras);
-        while($estaUsada==1 && $cont<=$limite){
-            if($cont==$limite){
-                echo "Usted ya uso todas las palabras";
-                $estaUsada=0;
-            }
-            if($posicionPalabra<$limite){
-            echo "Ustded ya uso esta palabra. Seleccione otra: ";
-            $posicionPalabra =  trim(fgets(STDIN));
-            $estaUsada=palabraUsada($esNombreUsuario,$posicionPalabra-1,$esColeccionPartidas,$coleccionPalabras);
-            $cont=$cont+1;
-        }else{
-            echo "No es un nro de palabra correcto. Ingrese otro: ";
-            $posicionPalabra =  trim(fgets(STDIN));
-
-        }
-        }
         
-        if ($posicionPalabra > count($coleccionPalabras)) {
-            echo "no es un nro de palabra correcto";
-        } else {
-            $esPalabraWordix = $coleccionPalabras[$posicionPalabra-1]; //Accedemos a la posicion de la palabra
-            $resumenPartidaJugada = jugarWordix($esPalabraWordix, $esNombreUsuario);//Invocando la funcion jugar Wordix
-            $anteriorPosicion=$posicionPalabra;
-        }
-
-
+        $PartidaJugada=opcionUno($esColeccionPartidas,$coleccionPalabras);
         //Guardando la partida en la coleccion partidas
-        array_push($esColeccionPartidas, $resumenPartidaJugada);
+        array_push($esColeccionPartidas, $PartidaJugada);
         //print_r($resumenPartidaJugada);
         //print_r($esColeccionPartidas);
+
         break;
 
 
