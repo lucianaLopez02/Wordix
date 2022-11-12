@@ -386,9 +386,9 @@ function opcionUno($listaPartidas,$listaPalabras){
     }
     
     if ($posicionPalabra > $limite) {
-        echo "no es un nro de palabra correcto";
+        echo "no es un nro de palabra correcto\n";
     }elseif($cont == $limite){
-        echo "Usted ya uso todas las palabras";
+        echo "Usted ya uso todas las palabras\n";
     } else {
         $esPalabraWordix = $listaPalabras[$posicionPalabra-1]; //Accedemos a la posicion de la palabra
         $resumenPartidaJugada = jugarWordix($esPalabraWordix, $esNombreUsuario);//Invocando la funcion jugar Wordix
