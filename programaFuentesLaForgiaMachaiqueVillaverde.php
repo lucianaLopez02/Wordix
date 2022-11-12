@@ -361,7 +361,7 @@ function opcionUno($listaPartidas,$listaPalabras){
     $estaUsada=palabraUsada($esNombreUsuario,$posicionPalabra-1,$listaPartidas,$listaPalabras);// se asegura que la palabra no se haya usado
     $cont=0;
     $limite=count($listaPalabras);
-    while($estaUsada==1 && $cont<=$limite){
+    while($estaUsada==1 && $cont<$limite){
         /*if($cont==$limite){// en el caso de que el usuario haya usado todas las palabras lo saca de la repetitiva
             echo "Usted ya uso todas las palabras";
             $estaUsada=0;
