@@ -387,6 +387,7 @@ function opcionUno($listaPartidas,$listaPalabras){
     
     if ($posicionPalabra > $limite) {
         echo "no es un nro de palabra correcto\n";
+        $resumenPartidaJugada=[0];
     }elseif($cont == $limite){
         echo "Usted ya uso todas las palabras\n";
     } else {
@@ -414,7 +415,7 @@ function opcionUno($listaPartidas,$listaPalabras){
 //Inicialización de variables:
 $coleccionPalabras = cargarColeccionPalabras(); //invocamos la coleccion de Palabras
 $esColeccionPartidas = cargarPartidas();//invocamos la coleccion de Partidas
-$todasPalabras=[];//variable de la opcion 1
+$todasPalabras=[0];//variable de la opcion 1
 $parar=count($coleccionPalabras);//variable de la opcion 2
 $contador=0;//variable de la opcion 2
 $i=0;
