@@ -361,11 +361,11 @@ function opcionUno($listaPartidas,$listaPalabras){
     $estaUsada=palabraUsada($esNombreUsuario,$posicionPalabra-1,$listaPartidas,$listaPalabras);// se asegura que la palabra no se haya usado
     $cont=0;
     $limite=count($listaPalabras);
-    while($estaUsada==1 && $cont<$limite){
-        /*if($cont==$limite){// en el caso de que el usuario haya usado todas las palabras lo saca de la repetitiva
-            echo "Usted ya uso todas las palabras";
-            $estaUsada=0;
-        }*/
+    while($estaUsada==1 && $cont<=$limite){
+        if($cont==$limite){// en el caso de que el usuario haya usado todas las palabras lo saca de la repetitiva
+            
+            $cont=$cont+1;
+        }
         if($posicionPalabra<$limite){
             if ($nroAnterior==$posicionPalabra){
                 $posicionPalabra=ingresarOtroNro($nroAnterior,$posicionPalabra);// impide que el contador avance si el usario ingresa el mismo numero varias veces
@@ -385,8 +385,10 @@ function opcionUno($listaPartidas,$listaPalabras){
     }
     }
     
-    if ($posicionPalabra > count($listaPalabras)) {
+    if ($posicionPalabra > $limite) {
         echo "no es un nro de palabra correcto";
+    }elseif($cont == $limite){
+        echo "Usted ya uso todas las palabras";
     } else {
         $esPalabraWordix = $listaPalabras[$posicionPalabra-1]; //Accedemos a la posicion de la palabra
         $resumenPartidaJugada = jugarWordix($esPalabraWordix, $esNombreUsuario);//Invocando la funcion jugar Wordix
@@ -410,6 +412,15 @@ function opcionUno($listaPartidas,$listaPalabras){
 
 
 //Inicialización de variables:
+$coleccionPalabras = cargarColeccionPalabras(); //invocamos la coleccion de Palabras
+$esColeccionPartidas = cargarPartidas();//invocamos la coleccion de Partidas
+$todasPalabras=[];//variable de la opcion 1
+$parar=count($coleccionPalabras);//variable de la opcion 2
+$contador=0;//variable de la opcion 2
+$i=0;
+$encontrado=false;//variable de la opcion 4
+$encontrado=0;//variable de la opcion 5
+$indice=-1;//variable de la opcion 5
 
 
 //Proceso:
@@ -429,8 +440,7 @@ Si no se escribe una sentencia break al final de la lista de sentencias de un ca
 del caso siguiente.
 Un caso especial es el default. Este caso coincide con cualquier cosa que no se haya correspondido por los otros casos.
 */
-$coleccionPalabras = cargarColeccionPalabras(); //invocamos la coleccion de Palabras
-$esColeccionPartidas = cargarPartidas();//invocamos la coleccion de Partidas
+
 
 do {
     
@@ -443,7 +453,13 @@ switch ($opcion) {
         
         $PartidaJugada=opcionUno($esColeccionPartidas,$coleccionPalabras);
         //Guardando la partida en la coleccion partidas
+        //array_push($esColeccionPartidas, $PartidaJugada); //que pasa si ya use todas las palabras? Guarda un Arreglo vacio
+        //como hago la comparacion de arreglo vacio? con otro arreglo vacio
+        
+        //Guardando la partida en la coleccion partidas
+        if($PartidaJugada!=$todasPalabras){//sale el mensaje de un arreglo no definido
         array_push($esColeccionPartidas, $PartidaJugada);
+        }
         //print_r($resumenPartidaJugada);
         //print_r($esColeccionPartidas);
 
@@ -458,12 +474,16 @@ switch ($opcion) {
         
         $indicePalabraAletario = array_rand($coleccionPalabras); //elige un elemento del arreglo aletoriamente
         $usada=palabraUsada($esNombreUsuario,$indicePalabraAletario,$esColeccionPartidas,$coleccionPalabras);
-        $parar=count($coleccionPalabras);
-        $contador=0;
-        while($usada==1 && $contador<$parar){
+        
+        while($usada==1 && $contador<=$parar){
+            if($contador==$parar){
+                //echo "No hay mas palabras a para jugar\n";
+                $contador=$contador+1;
+            }else{
             $indicePalabraAletario = array_rand($coleccionPalabras);
             $usada=palabraUsada($esNombreUsuario,$indicePalabraAletario,$esColeccionPartidas,$coleccionPalabras);
             $contador=$contador+1;
+        }
         }
         
         //echo "Índice escogido: {$indicePalabraAletario}" . PHP_EOL;
@@ -471,11 +491,12 @@ switch ($opcion) {
         if($contador<$parar){
         $esPalabraWordix = $coleccionPalabras[$indicePalabraAletario]; //Accedemos a la posicion de la palabra
         $resumenPartidaJugada = jugarWordix($esPalabraWordix, $esNombreUsuario);//Invocando la funcion jugar Wordix
+        //Guardando la partida en la coleccion partidas
+         array_push($esColeccionPartidas, $resumenPartidaJugada);
         }else{
             echo "Usted jugo con todas las palabras";
         }
-         //Guardando la partida en la coleccion partidas
-         array_push($esColeccionPartidas, $resumenPartidaJugada);
+         
 
         break;
     case 3:
@@ -501,9 +522,8 @@ switch ($opcion) {
         */
 
         $esNombreUsuario = solicitarJugador();
-        $stop=count($esColeccionPartidas);
-        $i=0;
-        $encontrado=false;
+        $stop=count($esColeccionPartidas);//variable de la opcion 4, esta variable se queda en la opcion porque se necesita actualizar
+        
         while($i<$stop && $encontrado==false){
         if ($esNombreUsuario == $esColeccionPartidas[$i]["jugador"]) {
             
@@ -536,11 +556,9 @@ switch ($opcion) {
         */
         $esNombreUsuario = solicitarJugador();
             //error si no existe jugador, recorrer con un while el arreglo para verifcar que este el nombre
-        $n = count($esColeccionPartidas);
+        $n = count($esColeccionPartidas);//variable de la opcion 5. Se la inicializa en la opcion porque se debe actualizar
         echo "cantidad de partidas: ".$n."\n";
-        $i = 0;
-        $encontrado=0;
-        $indice=-1;
+        
         while ($i < $n && $encontrado==0) {
             echo "posocion: ".$i. "\n";
             if($esNombreUsuario == $esColeccionPartidas[$i]["jugador"]){
