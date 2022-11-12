@@ -324,6 +324,21 @@ function palabraUsada($nombreJugador,$nroPalabra,$coleccionPartidas,$coleccionPa
 
  }
 
+ /**
+  * Verifica que no sea cero
+  *@param int $unNro
+  *@return int
+  */
+  function noEsCero($unNro){
+    // int $esCero
+    $esCero=0;
+   while($esCero==0){
+    echo "No esxiste esta posicion. Ingrese otra: ";
+    $esCero=trim(fgets(STDIN));
+   }
+   return $esCero;
+  }
+
 /**
  * Funcion que contiene el cuerpo de la opcion 1
  * @param array $listaPartidas
@@ -332,28 +347,31 @@ function palabraUsada($nombreJugador,$nroPalabra,$coleccionPartidas,$coleccionPa
  */
 function opcionUno($listaPartidas,$listaPalabras){
     // array $resumenPartidaJugada
-    //int $nroAnterior, $posicionPalabra, $cont, $limite, $estaUsada
+    //int $nroAnterior, $posicionPalabra, $cont, $limite, $estaUsada, $aux
     // string $esPosicionPalabra
     $nroAnterior=0;
     $esNombreUsuario = solicitarJugador(); //Solicita nombre a usuario
 
     echo "Ingrese un nro de palabra para jugar: "; // Solicita un número de palabra para jugar
     $posicionPalabra =  trim(fgets(STDIN));
-    
-    $estaUsada=palabraUsada($esNombreUsuario,$posicionPalabra-1,$listaPartidas,$listaPalabras);
+    if($posicionPalabra==0){// se asegura que no sea cero el numero
+        $aux=$posicionPalabra;
+        $posicionPalabra=noEsCero($aux);
+    }
+    $estaUsada=palabraUsada($esNombreUsuario,$posicionPalabra-1,$listaPartidas,$listaPalabras);// se asegura que la palabra no se haya usado
     $cont=0;
     $limite=count($listaPalabras);
     while($estaUsada==1 && $cont<=$limite){
-        if($cont==$limite){
+        /*if($cont==$limite){// en el caso de que el usuario haya usado todas las palabras lo saca de la repetitiva
             echo "Usted ya uso todas las palabras";
             $estaUsada=0;
-        }
+        }*/
         if($posicionPalabra<$limite){
             if ($nroAnterior==$posicionPalabra){
-                $posicionPalabra=ingresarOtroNro($nroAnterior,$posicionPalabra);
+                $posicionPalabra=ingresarOtroNro($nroAnterior,$posicionPalabra);// impide que el contador avance si el usario ingresa el mismo numero varias veces
                 $nroAnterior=$posicionPalabra;
                 }else{
-                $nroAnterior=$posicionPalabra;
+                $nroAnterior=$posicionPalabra;// guarda el numero ingresado para comparar en la siguiente ejecucion
             }
         echo "Ustded ya uso esta palabra. Seleccione otra: ";
         $posicionPalabra =  trim(fgets(STDIN));
