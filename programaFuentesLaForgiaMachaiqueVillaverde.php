@@ -306,7 +306,7 @@ function palabraUsada($nombreJugador,$nroPalabra,$coleccionPartidas,$coleccionPa
 
 }
 /**
- * Funcion que pide que ingreses un numero diferente
+ * Funcion que pide que ingreses un numero diferente. Usado en la opcion 1 para prevenir que el contador avance si el usuario mete un numero repetido
  * @param int $nro
  * @param int $anteriorNro
  * @return int
@@ -325,7 +325,7 @@ function palabraUsada($nombreJugador,$nroPalabra,$coleccionPartidas,$coleccionPa
  }
 
  /**
-  * Verifica que no sea cero
+  * Verifica que no sea cero. Hubo en error al momento de ingresar el cero en la opcion 1. Permitia jugar con la palabra -1 que no esxiste.
   *@param int $unNro
   *@return int
   */
@@ -354,7 +354,7 @@ function opcionUno($listaPartidas,$listaPalabras){
 
     echo "Ingrese un nro de palabra para jugar: "; // Solicita un número de palabra para jugar
     $posicionPalabra =  trim(fgets(STDIN));
-    if($posicionPalabra==0){// se asegura que no sea cero el numero
+    if($posicionPalabra==0){// se asegura que no sea cero el numero. Si es cero ocurre un error, la posicion quedaria -1
         $aux=$posicionPalabra;
         $posicionPalabra=noEsCero($aux);
     }
