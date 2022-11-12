@@ -84,8 +84,8 @@ function seleccionarOpcion(){
     return $numeroOpcion;
 }
 
-// funcion leerPalabra5Letras() de wordix.php?
-// funcion solicitarNumeroEntre($min, $max) de wordix.php?
+// funcion leerPalabra5Letras() de wordix.php
+// funcion solicitarNumeroEntre($min, $max) de wordix.php
 
 // Mostrar datos de partida. Punto 6
 /**
@@ -114,7 +114,7 @@ function mostrarDatosDePartida($nroPartida, $unaColeccionPartidas){
 
 // funcion agregarPalabra. Punto 7
 /**
- * agrega una nueva palabra a una colección 
+ * agrega una nueva palabra a la coleccion de palabras
  * @param array $unaColeccionPalabras
  * @param string $unaPalabra 
  * @return array 
@@ -373,7 +373,7 @@ function opcionUno($listaPartidas,$listaPalabras){
                 }else{
                 $nroAnterior=$posicionPalabra;// guarda el numero ingresado para comparar en la siguiente ejecucion
             }
-        echo "Ustded ya uso esta palabra. Seleccione otra: ";
+        echo "Usted ya uso esta palabra. Seleccione otra: ";
         $posicionPalabra =  trim(fgets(STDIN));
             
         $estaUsada=palabraUsada($esNombreUsuario,$posicionPalabra-1,$listaPartidas,$listaPalabras);
@@ -432,13 +432,13 @@ $indice=-1;//variable de la opcion 5
 
 
 /*
-La sentencia switch es similar a una serie de sentencias IF en la misma expresión. 
-La sentencia switch ejecuta línea por línea (en realidad, sentencia por sentencia). Al principio, 
-ningún código es ejecutado. Solo cuando se encuentra una sentencia case cuya expresión se evalúa a un valor 
-que coincida con el valor de la con un valor que coincide con el valor de la expresión switch
-PHP continúa ejecutando las sentencias hasta el final del bloque switch, o hasta la primera vez que vea una sentencia break. 
-Si no se escribe una sentencia break al final de la lista de sentencias de un caso, PHP seguirá ejecutando las sentencias 
-del caso siguiente.
+La sentencia switch es similar a una serie de sentencias IF en la misma 
+expresión. Ejecuta línea por línea (en realidad, sentencia por sentencia).
+Al principio, El código es ejecutado cuando se encuentra una sentencia case
+cuya expresión se evalúa a un valor que coincida con el valor de la expresión switch. 
+Entonces, PHP continúa ejecutando las sentencias hasta el final del bloque switch,
+o hasta la primera vez que vea una sentencia break. Si no se escribe una sentencia break 
+al final de la lista de sentencias de un caso, PHP seguirá ejecutando las sentencias del caso siguiente.
 Un caso especial es el default. Este caso coincide con cualquier cosa que no se haya correspondido por los otros casos.
 */
 
@@ -507,7 +507,7 @@ switch ($opcion) {
         siguiente formato:
          */
         $cantPartidas=count($esColeccionPartidas);
-        echo "Ingrese numero de partida: ";
+        echo "Ingrese número de partida: ";
 
         $nroPartida = solicitarNumeroEntre(0,$cantPartidas-1);
         
@@ -558,10 +558,10 @@ switch ($opcion) {
         $esNombreUsuario = solicitarJugador();
             //error si no existe jugador, recorrer con un while el arreglo para verifcar que este el nombre
         $n = count($esColeccionPartidas);//variable de la opcion 5. Se la inicializa en la opcion porque se debe actualizar
-        echo "cantidad de partidas: ".$n."\n";
+        //echo "cantidad de partidas: ".$n."\n";
         
         while ($i < $n && $encontrado2==0) {
-            echo "posocion: ".$i. "\n";
+            echo "posicion: ".$i. "\n";
             if($esNombreUsuario == $esColeccionPartidas[$i]["jugador"]){
                 $indice=$i;
                 $encontrado2=1;
