@@ -290,6 +290,7 @@ return $orden;                                                                  
  * @return int
  */
 function palabraUsada($nombreJugador,$nroPalabra,$coleccionPartidas,$coleccionPalabras){
+    //int $stop, $i, $usado
     $stop=count($coleccionPartidas);
     $i=0;
     $usado=0;
@@ -304,7 +305,24 @@ function palabraUsada($nombreJugador,$nroPalabra,$coleccionPartidas,$coleccionPa
     return $usado;
 
 }
+/**
+ * Funcion que pide que ingreses un numero diferente
+ * @param int $nro
+ * @param int $anteriorNro
+ * @return int
+ */
 
+ function ingresarOtroNro($anteriorNro, $nro){
+    // int $nuevoNro
+    $nuevoNro=$nro;
+     while($nuevoNro==$anteriorNro){
+        echo "Usted ya ingreso este numero. Ingrese otro:\n";
+        $nuevoNro=trim(fgets(STDIN));
+
+     }
+     return $nuevoNro;
+
+ }
 
 /**
  * Funcion que contiene el cuerpo de la opcion 1
@@ -314,6 +332,9 @@ function palabraUsada($nombreJugador,$nroPalabra,$coleccionPartidas,$coleccionPa
  */
 function opcionUno($listaPartidas,$listaPalabras){
     // array $resumenPartidaJugada
+    //int $nroAnterior, $posicionPalabra, $cont, $limite, $estaUsada
+    // string $esPosicionPalabra
+    $nroAnterior=0;
     $esNombreUsuario = solicitarJugador(); //Solicita nombre a usuario
 
     echo "Ingrese un nro de palabra para jugar: "; // Solicita un número de palabra para jugar
@@ -328,8 +349,15 @@ function opcionUno($listaPartidas,$listaPalabras){
             $estaUsada=0;
         }
         if($posicionPalabra<$limite){
+            if ($nroAnterior==$posicionPalabra){
+                $posicionPalabra=ingresarOtroNro($nroAnterior,$posicionPalabra);
+                $nroAnterior=$posicionPalabra;
+                }else{
+                $nroAnterior=$posicionPalabra;
+            }
         echo "Ustded ya uso esta palabra. Seleccione otra: ";
         $posicionPalabra =  trim(fgets(STDIN));
+            
         $estaUsada=palabraUsada($esNombreUsuario,$posicionPalabra-1,$listaPartidas,$listaPalabras);
         $cont=$cont+1;
     }else{
