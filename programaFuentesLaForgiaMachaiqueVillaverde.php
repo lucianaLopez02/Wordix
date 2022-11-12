@@ -457,13 +457,23 @@ switch ($opcion) {
         $esNombreUsuario = solicitarJugador(); //Solicita el nombre de usuario
         
         $indicePalabraAletario = array_rand($coleccionPalabras); //elige un elemento del arreglo aletoriamente
+        $usada=palabraUsada($esNombreUsuario,$indicePalabraAletario,$esColeccionPartidas,$coleccionPalabra);
+        $parar=count($coleccionPalabra);
+        $contador=0;
+        while($usada==1 && $contador<$parar){
+            $indicePalabraAletario = array_rand($coleccionPalabras);
+            $usada=palabraUsada($esNombreUsuario,$indicePalabraAletario,$esColeccionPartidas,$coleccionPalabra);
+            $contador=$contador+1;
+        }
         
         //echo "Índice escogido: {$indicePalabraAletario}" . PHP_EOL;
         //echo "Elemento escogido: {$coleccionPalabras[$indicePalabraAletario]}" . PHP_EOL;
-
+        if($contador<$parar){
         $esPalabraWordix = $coleccionPalabras[$indicePalabraAletario]; //Accedemos a la posicion de la palabra
         $resumenPartidaJugada = jugarWordix($esPalabraWordix, $esNombreUsuario);//Invocando la funcion jugar Wordix
-
+        }else{
+            echo "Usted jugo con todas las palabras";
+        }
          //Guardando la partida en la coleccion partidas
          //array_push($esColeccionPartidas, $resumenPartidaJugada);
 
