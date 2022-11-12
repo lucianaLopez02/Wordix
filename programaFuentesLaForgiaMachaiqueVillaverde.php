@@ -406,9 +406,9 @@ function opcionUno($listaPartidas,$listaPalabras){
 
 //Declaración de variables:
 //string $esNombreUsuario, $palabra                                                                                                                  //Falta declaracion del caso 1
-//int $opcion, $cantPartidas, $nroPartida, $stop, $i, $posicionPrimeraPartida, $n, $indice, $encontrado, $porcentajeVictorias, $indicePalabraAletorio,                       
+//int $opcion, $cantPartidas, $nroPartida, $stop, $i, $posicionPrimeraPartida, $n, $indice, $encontrado, $porcentajeVictorias, $indicePalabraAletorio, $parar, $contador                      
 //boolean $encontrado
-//array $coleccionPalabras, $esColeccionPartidas, $resumenPartidaJugada, $resumen, $coleccionPalabra                     
+//array $coleccionPalabras, $esColeccionPartidas, $resumenPartidaJugada, $resumen, $coleccionPalabra, $todasPalabras                     
 
 
 //Inicialización de variables:
@@ -418,8 +418,8 @@ $todasPalabras=[];//variable de la opcion 1
 $parar=count($coleccionPalabras);//variable de la opcion 2
 $contador=0;//variable de la opcion 2
 $i=0;
-$encontrado=false;//variable de la opcion 4
-$encontrado=0;//variable de la opcion 5
+$encontrado1=false;//variable de la opcion 4
+$encontrado2=0;//variable de la opcion 5
 $indice=-1;//variable de la opcion 5
 
 
@@ -524,7 +524,7 @@ switch ($opcion) {
         $esNombreUsuario = solicitarJugador();
         $stop=count($esColeccionPartidas);//variable de la opcion 4, esta variable se queda en la opcion porque se necesita actualizar
         
-        while($i<$stop && $encontrado==false){
+        while($i<$stop && $encontrado1==false){
         if ($esNombreUsuario == $esColeccionPartidas[$i]["jugador"]) {
             
             $posicionPrimeraPartida = primeraPartidaGanada($esColeccionPartidas, $esNombreUsuario);
@@ -536,7 +536,7 @@ switch ($opcion) {
             } else {
                 echo "El jugador $esNombreUsuario no ganó ninguna partida\n";
             }
-            $encontrado=true;
+            $encontrado1=true;
             
            
         } else {
@@ -544,7 +544,7 @@ switch ($opcion) {
         }
         
     }
-    if($i==$stop && $encontrado==false){
+    if($i==$stop && $encontrado1==false){
         echo "No existe jugador\n";
         }
 
@@ -559,17 +559,17 @@ switch ($opcion) {
         $n = count($esColeccionPartidas);//variable de la opcion 5. Se la inicializa en la opcion porque se debe actualizar
         echo "cantidad de partidas: ".$n."\n";
         
-        while ($i < $n && $encontrado==0) {
+        while ($i < $n && $encontrado2==0) {
             echo "posocion: ".$i. "\n";
             if($esNombreUsuario == $esColeccionPartidas[$i]["jugador"]){
                 $indice=$i;
-                $encontrado=1;
+                $encontrado2=1;
                 
             }
             $i=$i+1;
         }
             
-        if($encontrado==1){
+        if($encontrado2==1){
         $resumen = resumenJugador($esColeccionPartidas, $esNombreUsuario);
         
             //print_r($resumen);
