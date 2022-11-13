@@ -373,16 +373,16 @@ function opcionUno($listaPartidas,$listaPalabras){
                 }else{
                 $nroAnterior=$posicionPalabra;// guarda el numero ingresado para comparar en la siguiente ejecucion
             }
-        echo "Usted ya uso esta palabra. Seleccione otra: ";
-        $posicionPalabra =  trim(fgets(STDIN));
+            echo "Usted ya uso esta palabra. Seleccione otra: ";
+            $posicionPalabra =  trim(fgets(STDIN));
             
-        $estaUsada=palabraUsada($esNombreUsuario,$posicionPalabra-1,$listaPartidas,$listaPalabras);
-        $cont=$cont+1;
-    }else{
+            $estaUsada=palabraUsada($esNombreUsuario,$posicionPalabra-1,$listaPartidas,$listaPalabras);
+            $cont=$cont+1;
+        }else{
         echo "No es un nro de palabra correcto. Ingrese otro: ";
         $posicionPalabra =  trim(fgets(STDIN));
 
-    }
+         }
     }
     
     if ($posicionPalabra > $limite) {
