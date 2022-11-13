@@ -130,7 +130,7 @@ function escribirMensajeBienvenida($usuario)
 }
 
 
-/**
+/******COMPLETAR***** Completado
  * recibe una cadena de texto y verifica que la cadena de texto sea texto y retorna true si todas son letras 
  * @param  string $cadena 
  * @return boolean 
@@ -149,7 +149,7 @@ function esPalabra($cadena)
 }
 
 /**
- * completado
+ * ****COMPLETAR***** Completado
  * Pide al usuario ingresar una plabra de 5 letras y retorna la palbra
  * @return string
  */
@@ -330,7 +330,7 @@ function esIntentoGanado($estructuraPalabraIntento)
 }
 
 /**
- * ****COMPLETAR***** documentación de la intefaz
+ * ****COMPLETAR*****Completado
  * Funcion que calcula el puntaje de wordix 
  * @param int $intento
  * @param string $palabra
