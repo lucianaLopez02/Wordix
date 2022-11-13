@@ -254,7 +254,7 @@ function solicitarJugador () {
 
 //PUNTO 11 
 /**
- * Ordena una coleccion de partidas ordenadas por el nombre del jugador y por la palabra
+ * Ordena una coleccion de partidas  por el nombre del jugador y por la palabra
  * @param -- $partida1 
  * @param -- $partida2
  * @return int $orden  
