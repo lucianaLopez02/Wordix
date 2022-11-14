@@ -407,10 +407,10 @@ function opcionUno($listaPartidas,$listaPalabras){
 /**************************************/
 
 //Declaración de variables:
-//string $esNombreUsuario, $palabra                                                                                                                  //Falta declaracion del caso 1
-//int $opcion, $cantPartidas, $nroPartida, $stop, $i, $posicionPrimeraPartida, $n, $indice, $encontrado, $porcentajeVictorias, $indicePalabraAletorio, $parar, $contador                      
+//string $esNombreUsuario, $palabra                                                                                                                 
+//int $opcion, $cantPartidas, $nroPartida, $stop, $i, $posicionPrimeraPartida, $n, $indice, $encontrado, $porcentajeVictorias, $indicePalabraAletorio, $parar, $contador , $usada                    
 //boolean $encontrado
-//array $coleccionPalabras, $esColeccionPartidas, $resumenPartidaJugada, $resumen, $coleccionPalabra, $todasPalabras                     
+//array $coleccionPalabras, $esColeccionPartidas, $resumenPartidaJugada, $resumen, $coleccionPalabra, $todasPalabras ,$partidaJugada           
 
 
 //Inicialización de variables:
@@ -453,14 +453,14 @@ switch ($opcion) {
         //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
         //Caso 1: Jugar al wordix con una palabra elegida.
         
-        $PartidaJugada=opcionUno($esColeccionPartidas,$coleccionPalabras);
+        $partidaJugada=opcionUno($esColeccionPartidas,$coleccionPalabras);
         //Guardando la partida en la coleccion partidas
         //array_push($esColeccionPartidas, $PartidaJugada); //que pasa si ya use todas las palabras? Guarda un Arreglo vacio
         //como hago la comparacion de arreglo vacio? con otro arreglo vacio
         
         //Guardando la partida en la coleccion partidas
-        if($PartidaJugada!=$todasPalabras){//sale el mensaje de un arreglo no definido
-        array_push($esColeccionPartidas, $PartidaJugada);
+        if($partidaJugada!=$todasPalabras){//sale el mensaje de un arreglo no definido
+        array_push($esColeccionPartidas, $partidaJugada);
         }
         //print_r($resumenPartidaJugada);
         //print_r($esColeccionPartidas);
