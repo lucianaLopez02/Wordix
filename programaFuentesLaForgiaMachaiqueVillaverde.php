@@ -189,7 +189,7 @@ function resumenJugador($coleccionPartidas,$nombreJugador){
                 $resumen["puntaje"]= $coleccionPartidas[$i]["puntaje"] + $resumen["puntaje"];
                 $resumen["victorias"]= $resumen["victorias"]+1;
             }
-            if($elemento["intentos"] == 1){
+            if ($elemento["intentos"] == 1){
                 $resumen["intento1"]=$resumen["intento1"]+1;
             }elseif($elemento["intentos"] == 2){
                 $resumen["intento2"]=$resumen["intento2"]+1;
@@ -203,7 +203,7 @@ function resumenJugador($coleccionPartidas,$nombreJugador){
                 $resumen["intento6"]=$resumen["intento6"]+1;
             }
 
-        }
+        } 
     }
     return $resumen;
 
@@ -565,7 +565,7 @@ switch ($opcion) {
         //echo "cantidad de partidas: ".$n."\n";
         
         while ($i < $n && $encontrado2==0) {
-            echo "posicion: ".$i. "\n";
+            
             if($esNombreUsuario == $esColeccionPartidas[$i]["jugador"]){
                 $indice=$i;
                 $encontrado2=1;
