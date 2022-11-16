@@ -420,6 +420,28 @@ function existePalabra($unaColeccionPalabras, $unaPalabra){
             return $bandera;
 }
 
+/**
+ * funcion que verifica si el jugador existe o no
+ * @param array $coleccionPartidas
+ * @param string $nombreJugador
+ * @return int
+ */
+function existeJugador($coleccionPartidas,$nombreJugador){
+    //int $n, $i, $encontrado2
+$n=count($coleccionPartidas);
+$i=0;
+$encontrado2=0;
+    while ($i < $n && $encontrado2==0) {
+            
+        if($nombreJugador == $coleccionPartidas[$i]["jugador"]){
+           // $indice=$i;
+            $encontrado2=1;
+            
+        }
+        $i=$i+1;
+    }
+    return $encontrado2;//0 si no existe, 1 si existe
+}
 
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
@@ -544,8 +566,9 @@ switch ($opcion) {
 
         $esNombreUsuario = solicitarJugador();
         $stop=count($esColeccionPartidas);//variable de la opcion 4, esta variable se queda en la opcion porque se necesita actualizar
+        $existe=existeJugador($esColeccionPartidas,$esNombreUsuario);
         
-        
+          if($existe==1){
             $posicionPrimeraPartida = primeraPartidaGanada($esColeccionPartidas, $esNombreUsuario);
 
             //echo "posicion: ".$posicionPrimeraPartida."\n";
@@ -555,7 +578,9 @@ switch ($opcion) {
             } else {
                 echo "El jugador ". $esNombreUsuario." no ganó ninguna partida\n";
             }
-            
+        }else{
+            echo "No existe jugador";
+        }
             
            
         
@@ -573,18 +598,11 @@ switch ($opcion) {
             //error si no existe jugador, recorrer con un while el arreglo para verifcar que este el nombre
         $n = count($esColeccionPartidas);//variable de la opcion 5. Se la inicializa en la opcion porque se debe actualizar
         //echo "cantidad de partidas: ".$n."\n";
+        $existe=existeJugador($esColeccionPartidas,$esNombreUsuario);
         
-        while ($i < $n && $encontrado2==0) {
+        
             
-            if($esNombreUsuario == $esColeccionPartidas[$i]["jugador"]){
-                $indice=$i;
-                $encontrado2=1;
-                
-            }
-            $i=$i+1;
-        }
-            
-        if($encontrado2==1){
+        if($existe==1){
         $resumen = resumenJugador($esColeccionPartidas, $esNombreUsuario);
         
             //print_r($resumen);
