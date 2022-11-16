@@ -97,11 +97,11 @@ function seleccionarOpcion(){
  * @param array $unaColeccionPartidas
  */
 function mostrarDatosDePartida($nroPartida, $unaColeccionPartidas){
-
+    $nroPartida=$nroPartida-1;
     echo "*****************************\n";
-    echo "Partida WORDIX $nroPartida : palabra ". $unaColeccionPartidas[$nroPartida-1]["palabraWordix"]."\n";
-    echo "Jugador: " .$unaColeccionPartidas[$nroPartida-1]["jugador"]."\n";
-    echo "Puntaje: " .$unaColeccionPartidas[$nroPartida-1]["puntaje"]. " puntos\n";
+    echo "Partida WORDIX $nroPartida : palabra ". $unaColeccionPartidas[$nroPartida]["palabraWordix"]."\n";
+    echo "Jugador: " .$unaColeccionPartidas[$nroPartida]["jugador"]."\n";
+    echo "Puntaje: " .$unaColeccionPartidas[$nroPartida]["puntaje"]. " puntos\n";
 
     if ($unaColeccionPartidas[$nroPartida-1]["puntaje"] != 0) 
     {
@@ -578,13 +578,17 @@ switch ($opcion) {
         $resumen = resumenJugador($esColeccionPartidas, $esNombreUsuario);
         
             //print_r($resumen);
+            if($resumen["victorias"]>0){
         $porcentajeVictorias = (int)($resumen["victorias"] * 100 /  $resumen["partidas"]);
+            }else{
+                $porcentajeVictorias=0;
+            }
         echo "*********************************\n";
         echo "Jugador: " .$resumen["nombre"] ."\n" ;
         echo "Partidas:". $resumen["partidas"]  ."\n";
         echo "Puntaje Total: " . $resumen["puntaje"] ."\n";
         echo "Victorias:" .$resumen["victorias"]. "\n";
-        echo "Porcentaje Victorias: $porcentajeVictorias % \n";
+        echo "Porcentaje Victorias:". $porcentajeVictorias ."% \n";
         echo "Adivinadas: \n";
         echo " Intento 1: ".$resumen["intento1"]."\n";
         echo " Intento 2: ".$resumen["intento2"]."\n";
