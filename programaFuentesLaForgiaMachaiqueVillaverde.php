@@ -401,6 +401,24 @@ function opcionUno($listaPartidas,$listaPalabras){
     return $resumenPartidaJugada;
    
 }
+/**
+ * @param array $coleccionPalabras
+ * @param string $unaPalabra
+ * @return boolean
+ */
+function existePalabra($unaColeccionPalabras, $unaPalabra){
+            
+            $cant = count($unaColeccionPalabras);
+            $i=0;
+            $bandera = false;
+            while ($i < $cant && !$bandera) {
+                if($unaPalabra == $unaColeccionPalabras[$i]){
+                    $bandera = true;
+                }
+                $i++;
+            }
+            return $bandera;
+}
 
 
 /**************************************/
@@ -617,10 +635,26 @@ switch ($opcion) {
 
             //$esUnaPalabra = esPalabra($palabra); //Funcion que verifica que la palabra sea texto
 
-            $coleccionPalabras = agregarPalabra($coleccionPalabras, $palabra); //Agrega la palabra a la colección
+            //$coleccionPalabras = agregarPalabra($coleccionPalabras, $palabra); //Agrega la palabra a la colección
+            //echo "Palabra $palabra agregada! ";
 
+            
+            $existe = existePalabra($coleccionPalabras,$palabra); //retorna 1 si no encuentra la palabra en la coleccion, 0 si la encuentra
+            echo $existe;
+
+            while ($existe) {
+                        echo "Esta palabra ya se encuentra en la colección\n";
+                        $palabra = leerPalabra5Letras(); 
+                        $existe = existePalabra($coleccionPalabras,$palabra);
+                        echo $existe;
+                    }
+            
+
+            $coleccionPalabras = agregarPalabra($coleccionPalabras, $palabra); //Agrega la palabra a la colección
             echo "Palabra $palabra agregada! ";
+
+
             //print_r($coleccionPalabras);
             break;
-    }
+        }
 } while ($opcion != 8);
