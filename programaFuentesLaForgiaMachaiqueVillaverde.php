@@ -275,11 +275,7 @@ function ordenColeccionPartidas ($partida1, $partida2) {
             $orden = 1; 
         }
     } elseif ($partida1["jugador"] < $partida2["jugador"]) {
-        if ($partida1["palabraWordix"] < $partida2["palabraWordix"]) {
             $orden = -1; 
-        } else {
-            $orden = 1; 
-        }
     }  else {
          $orden = 1; 
 }
