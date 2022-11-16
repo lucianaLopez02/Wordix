@@ -46,17 +46,20 @@ function cargarColeccionPalabras()
 function cargarPartidas(){
     $coleccionPartidas = []; // Inicializo la coleccion de partidas
 
-    $coleccionPartidas[0] = ["palabraWordix" => "QUESO","jugador" => "majo","intentos" => 6 ,"puntaje" => 0];
-    $coleccionPartidas[1] = ["palabraWordix" => "CASAS","jugador" => "rudolf","intentos" => 3 ,"puntaje" => 14];
-    $coleccionPartidas[2] = ["palabraWordix" => "QUESO","jugador" => "luna","intentos" => 6 ,"puntaje" => 10];
-    $coleccionPartidas[3] = ["palabraWordix" => "TIGRE","jugador" => "trufa48","intentos" => 5 ,"puntaje" => 12];
-    $coleccionPartidas[4] = ["palabraWordix" => "PIANO","jugador" => "luna","intentos" => 6 ,"puntaje" => 5];
-    $coleccionPartidas[5] = ["palabraWordix" => "CASAS","jugador" => "trufa48","intentos" => 3 ,"puntaje" => 0];
-    $coleccionPartidas[6] = ["palabraWordix" => "YUYOS","jugador" => "luna","intentos" => 6 ,"puntaje" => 15];
-    $coleccionPartidas[7] = ["palabraWordix" => "HUEVO","jugador" => "trufa48","intentos" => 1 ,"puntaje" => 8];
-    $coleccionPartidas[8] = ["palabraWordix" => "GATOS","jugador" => "zoe","intentos" => 2 ,"puntaje" => 6];
-    $coleccionPartidas[9] = ["palabraWordix" => "LAPIZ","jugador" => "luna","intentos" => 2 ,"puntaje" => 0];
-
+    $pa1 = ["palabraWordix" => "SUECO", "jugador" => "kleiton", "intentos" => 0, "puntaje" => 0];
+    $pa2 = ["palabraWordix" => "YUYOS", "jugador" => "briba", "intentos" => 0, "puntaje" => 0];
+    $pa3 = ["palabraWordix" => "HUEVO", "jugador" => "zrack", "intentos" => 3, "puntaje" => 9];
+    $pa4 = ["palabraWordix" => "TINTO", "jugador" => "cabrito", "intentos" => 4, "puntaje" => 8];
+    $pa5 = ["palabraWordix" => "RASGO", "jugador" => "briba", "intentos" => 0, "puntaje" => 0];
+    $pa6 = ["palabraWordix" => "VERDE", "jugador" => "cabrito", "intentos" => 5, "puntaje" => 7];
+    $pa7 = ["palabraWordix" => "CASAS", "jugador" => "kleiton", "intentos" => 5, "puntaje" => 7];
+    $pa8 = ["palabraWordix" => "GOTAS", "jugador" => "kleiton", "intentos" => 0, "puntaje" => 0];
+    $pa9 = ["palabraWordix" => "ZORRO", "jugador" => "zrack", "intentos" => 4, "puntaje" => 8];
+    $pa10 = ["palabraWordix" => "GOTAS", "jugador" => "cabrito", "intentos" => 0, "puntaje" => 0];
+    $pa11 = ["palabraWordix" => "FUEGO", "jugador" => "cabrito", "intentos" => 2, "puntaje" => 10];
+    $pa12 = ["palabraWordix" => "TINTO", "jugador" => "briba", "intentos" => 0, "puntaje" => 0];
+    
+    array_push($coleccionPartidas, $pa1, $pa2, $pa3, $pa4, $pa5, $pa6, $pa7, $pa8, $pa9, $pa10, $pa11, $pa12);
     return $coleccionPartidas;
 }
 
@@ -510,7 +513,7 @@ switch ($opcion) {
         $cantPartidas=count($esColeccionPartidas);
         echo "Ingrese número de partida: ";
 
-        $nroPartida = solicitarNumeroEntre(0,$cantPartidas-1);
+        $nroPartida = solicitarNumeroEntre(1,$cantPartidas);
         
         mostrarDatosDePartida($nroPartida, $esColeccionPartidas);
 
