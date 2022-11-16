@@ -103,9 +103,9 @@ function mostrarDatosDePartida($nroPartida, $unaColeccionPartidas){
     echo "Jugador: " .$unaColeccionPartidas[$nroPartida]["jugador"]."\n";
     echo "Puntaje: " .$unaColeccionPartidas[$nroPartida]["puntaje"]. " puntos\n";
 
-    if ($unaColeccionPartidas[$nroPartida-1]["puntaje"] != 0) 
+    if ($unaColeccionPartidas[$nroPartida]["puntaje"] != 0) 
     {
-        echo "Intento: Adivino la palabra en ".$unaColeccionPartidas[$nroPartida-1]["intentos"]." intentos\n";
+        echo "Intento: Adivino la palabra en ".$unaColeccionPartidas[$nroPartida]["intentos"]." intentos\n";
     } else {
         echo "Intento: No adivino la palabra\n";
 
@@ -512,7 +512,7 @@ switch ($opcion) {
         echo "Ingrese número de partida: ";
 
         $nroPartida = solicitarNumeroEntre(1,$cantPartidas);
-        
+        $nroPartida=$nroPartida-1;
         mostrarDatosDePartida($nroPartida, $esColeccionPartidas);
 
         break;
