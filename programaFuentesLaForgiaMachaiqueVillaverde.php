@@ -97,9 +97,9 @@ function seleccionarOpcion(){
  * @param array $unaColeccionPartidas
  */
 function mostrarDatosDePartida($nroPartida, $unaColeccionPartidas){
-    $nroPartida=$nroPartida-1;
+    $nroPartida=$nroPartida;
     echo "*****************************\n";
-    echo "Partida WORDIX $nroPartida : palabra ". $unaColeccionPartidas[$nroPartida]["palabraWordix"]."\n";
+    echo "Partida WORDIX ". $nroPartida." : palabra ". $unaColeccionPartidas[$nroPartida]["palabraWordix"]."\n";
     echo "Jugador: " .$unaColeccionPartidas[$nroPartida]["jugador"]."\n";
     echo "Puntaje: " .$unaColeccionPartidas[$nroPartida]["puntaje"]. " puntos\n";
 
@@ -143,7 +143,8 @@ function primeraPartidaGanada($coleccionPartidas,$nombreJugador){
     $i=0;
     $partidaGanda=0;
     while(($i< $limite)&&($partidaGanda==0)){
-
+        
+        //echo "$i: ".$i."\n";
         if(($coleccionPartidas[$i]["jugador"]==$nombreJugador) && ($coleccionPartidas[$i]["puntaje"]>0) ){
             $indice= $i;
             $partidaGanda=1;       
@@ -151,6 +152,7 @@ function primeraPartidaGanada($coleccionPartidas,$nombreJugador){
             $indice=-1;
             $i=$i+1;
         }
+        //echo "partida ganada: ".$partidaGanda."\n";
         
     }
     return $indice;
@@ -529,29 +531,23 @@ switch ($opcion) {
         $esNombreUsuario = solicitarJugador();
         $stop=count($esColeccionPartidas);//variable de la opcion 4, esta variable se queda en la opcion porque se necesita actualizar
         
-        while($i<$stop && $encontrado1==false){
-        if ($esNombreUsuario == $esColeccionPartidas[$i]["jugador"]) {
-            
+        
             $posicionPrimeraPartida = primeraPartidaGanada($esColeccionPartidas, $esNombreUsuario);
 
-            //echo "posicion: ".$posicionPrimeraPartida;
-
-            if ($posicionPrimeraPartida == $i) {
+            //echo "posicion: ".$posicionPrimeraPartida."\n";
+            //echo "i del while: ".$i."\n";
+            if ($posicionPrimeraPartida != -1) {
                 mostrarDatosDePartida($posicionPrimeraPartida, $esColeccionPartidas);
             } else {
-                echo "El jugador $esNombreUsuario no ganó ninguna partida\n";
+                echo "El jugador ". $esNombreUsuario." no ganó ninguna partida\n";
             }
-            $encontrado1=true;
+            
             
            
-        } else {
-            $i=$i+1;
-        }
         
-    }
-    if($i==$stop && $encontrado1==false){
-        echo "No existe jugador\n";
-        }
+        
+    
+    
 
         break;
     case 5:
